@@ -1,0 +1,33 @@
+# Archivos de usuario de Qt Creator
+*.pro.user
+*.pro.user.*
+
+# Carpeta de build (compilación)
+build/
+build-*/
+
+# Archivos generados por CMake (si llegas a usarlo)
+CMakeLists.txt.user
+
+# Archivos temporales de Qt Creator
+*.autosave
+*.qmlproject.user
+*.creator.user
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Compilados
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.lib
+
+# Archivos de respaldo
+*~
+*.bak
+*.swp

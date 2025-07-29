@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>images/icons/adc_icon.png</file>
+        <file>images/icons/ccp_icon.png</file>
+        <file>images/icons/comparator_icon.png</file>
+        <file>images/icons/comparator_volt_ref_icon.png</file>
+        <file>images/icons/crystal_icon.png</file>
+        <file>images/icons/dac_icon.png</file>
+        <file>images/icons/eccp_icon.png</file>
+        <file>images/icons/eeprom_icon.png</file>
+        <file>images/icons/esuart_icon.png</file>
+        <file>images/icons/ext_interrupt_icon.png</file>
+        <file>images/icons/interrupt_icon.png</file>
+        <file>images/icons/mainLogo.png</file>
+        <file>images/icons/mssp_icon.png</file>
+        <file>images/icons/save_icon.png</file>
+        <file>images/icons/timer_icon.png</file>
+        <file>images/icons/usart_icon.png</file>
+        <file>images/icons/usb_icon.png</file>
+        <file>images/icons/mainLogo16x16.ico</file>
+        <file>images/icons/mainLogo32x32.ico</file>
+        <file>images/icons/mainLogo48x48.ico</file>
+        <file>images/icons/mainLogo256x256.ico</file>
+    </qresource>
+</RCC>
