@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,5 +19,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QLabel *labelLogo, *labelNombrePrograma;
+
 };
 #endif // MAINWINDOW_H
