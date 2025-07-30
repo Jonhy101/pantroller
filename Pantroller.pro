@@ -10,13 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    $$files(gui/*.cpp) \
+    $$files(logic/*.cpp) \
+
 
 HEADERS += \
-    mainwindow.h
+    $$files(gui/*.h) \
+    $$files(logic/*.h)
 
 FORMS += \
-    mainwindow.ui
+    gui/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -25,3 +28,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources/my_resources.qrc
+
+INCLUDEPATH += $$PWD/gui
+INCLUDEPATH += $$PWD/logic
