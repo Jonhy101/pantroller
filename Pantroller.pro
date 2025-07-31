@@ -9,14 +9,15 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    $$files(gui/*.cpp) \
-    $$files(logic/*.cpp) \
-
+    gui/mainmenugenerator.cpp \
+    gui/widgetsfactory.cpp \
+    main.cpp\
+    gui/mainwindow.cpp
 
 HEADERS += \
-    $$files(gui/*.h) \
-    $$files(logic/*.h)
+    gui/widgetsfactory.h \
+    gui/mainmenugenerator.h\
+    gui/mainwindow.h
 
 FORMS += \
     gui/mainwindow.ui

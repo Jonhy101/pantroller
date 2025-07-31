@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include "gui/mainmenugenerator.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,10 +17,12 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+private slots:
+    void cambiarPanel(int index);
 private:
     Ui::MainWindow *ui;
     QLabel *labelLogo, *labelNombrePrograma;
+    MainMenuGenerator *mainMenuPanel;
 
 };
 #endif // MAINWINDOW_H

@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QDebug>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -50,15 +52,29 @@ MainWindow::MainWindow(QWidget *parent)
         color: #4E7FE3;
         font-weight: bold;
     )");
+
+    //versión
     layoutHeader->addWidget(labelNombrePrograma);
     layoutHeader->addStretch();
     layoutHeader->addWidget(new QLabel("Version 1.0"));
     /***********************************************************************/
 
+    //Layout de los paneles del programa
+    QHBoxLayout *layoutPaneles=new QHBoxLayout();
+    mainMenuPanel=new MainMenuGenerator(this);
+    layoutPaneles->addWidget(mainMenuPanel);    
+    mainLayout->addLayout(layoutPaneles);
 
     //subir todo hacia arriba
     mainLayout->addStretch();
 
+    //Signals and slots
+    connect(mainMenuPanel,MainMenuGenerator::menuOptionSelected,this,&MainWindow::cambiarPanel);
+
+}
+
+void MainWindow::cambiarPanel(int index){
+    qDebug()<<"Cambiando al panel: "<<index;
 }
 
 MainWindow::~MainWindow() {
