@@ -61,8 +61,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     //Layout de los paneles del programa
     QHBoxLayout *layoutPaneles=new QHBoxLayout();
+
+    //generar menú principal
     mainMenuPanel=new MainMenuGenerator(this);
-    layoutPaneles->addWidget(mainMenuPanel);    
+    layoutPaneles->addWidget(mainMenuPanel);
+
+    //agregar layout de paneles al principal
     mainLayout->addLayout(layoutPaneles);
 
     //subir todo hacia arriba

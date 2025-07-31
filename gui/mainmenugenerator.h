@@ -14,17 +14,14 @@ signals:
     void menuOptionSelected(int index);
 
 private slots:
-    void onConfPerifericoClicked();
-    void onFiltrosClicked();
-    void onDivVoltClicked();
-    void onConBaseClicked();
-    void onAyudaClicked();
-    void onAcercaDeClicked();
+    void onMenuButtonClicked();
 
 private:
     QLabel *lblTitPeriferico, *lblOtrasHerr, *lblSoporte;
     QPushButton *btnConfPeriferico, *btnFiltros, *btnDivVolt, *btnConBase, *btnAyuda,
-        *btnAcercaDe;
+        *btnAcercaDe, *activeButton=nullptr;
+
+    void actualizaEstado(QPushButton *newActiveButton);
 };
 
 

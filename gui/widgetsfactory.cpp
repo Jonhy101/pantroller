@@ -20,6 +20,7 @@ QPushButton* WidgetsFactory::createButton(const QString &text, QWidget *parent){
             text-align: left;
             padding-left: 15px;
         }
+
         QPushButton:hover{
             background-color: #354970;
         }
@@ -27,7 +28,26 @@ QPushButton* WidgetsFactory::createButton(const QString &text, QWidget *parent){
         QPushButton:pressed{
             background-color: #273754;
         }
-    )");    
+
+        QPushButton:checked{
+            background-color: #273754;
+        }
+    )");
+    btn->setCheckable(true);
     return btn;
+}
+
+QFrame* WidgetsFactory::createMenuSeparator(){
+    QFrame *separator=new QFrame();
+    separator->setFrameShape(QFrame::HLine);
+    separator->setFrameShadow(QFrame::Plain);
+    separator->setFixedHeight(2);
+    separator->setStyleSheet(R"(
+        background-color: #10192D;
+        margin-left: 15px;
+        margin-right: 15px;
+        border: none;
+    )");
+    return separator;
 }
 
