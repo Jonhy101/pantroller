@@ -7,6 +7,7 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     this->setStyleSheet("background-color: #151E36");
     QVBoxLayout *mainLayout=new QVBoxLayout(this);
+    mainLayout->setContentsMargins(0,0,0,0);
 
     /*********Menu configurar periférico***********/
     QWidget *containerMPerifericos=new QWidget();

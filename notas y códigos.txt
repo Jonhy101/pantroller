@@ -1,0 +1,17 @@
+/**********QSS para el QComboBox**********/
+
+/* Flecha de despliegue del QComboBox */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px;                    /* Ancho del área de la flecha */
+    border-left: 1px solid #999999;
+    background-color: #f0f0f0;
+}
+
+/* Imagen de la flecha */
+QComboBox::down-arrow {
+    image: url(:/icons/down-arrow.svg);  Cambia esto si quieres una imagen personalizada */
+    width: 12px;
+    height: 12px;
+}

@@ -21,5 +21,11 @@
         <file>images/icons/mainLogo32x32.ico</file>
         <file>images/icons/mainLogo48x48.ico</file>
         <file>images/icons/mainLogo256x256.ico</file>
+        <file>images/icons/up-arrowIcon.png</file>
+        <file>images/icons/down-arrowIcon.png</file>
+        <file>images/icons/up-arrow-pressed.png</file>
+        <file>images/icons/down-arrow-lineEdit-Pressed.png</file>
+        <file>images/icons/down-arrow-lineEdit.png</file>
+        <file>images/icons/down-arrow-pressed.png</file>
     </qresource>
 </RCC>

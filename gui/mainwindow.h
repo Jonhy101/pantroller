@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QStackedLayout>
 #include "gui/mainmenugenerator.h"
+#include "gui/devicewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,6 +25,7 @@ private:
     Ui::MainWindow *ui;
     QLabel *labelLogo, *labelNombrePrograma;
     MainMenuGenerator *mainMenuPanel;
+    QStackedLayout *layoutMenuPaneles;
 
 };
 #endif // MAINWINDOW_H

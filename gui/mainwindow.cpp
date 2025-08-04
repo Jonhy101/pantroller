@@ -3,6 +3,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QDebug>
+#include <QStackedLayout>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     centralWidget->setStyleSheet(R"(
         background-color: #10192d;
     )");
+
     //icono
     QIcon mainIcon;
     mainIcon.addFile(":/icons/images/icons/mainLogo16x16.ico", QSize(16,16));
@@ -27,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //layout principal, eliminando márgenes
     QVBoxLayout *mainLayout=new QVBoxLayout(centralWidget);
-    mainLayout->setContentsMargins(0,0,0,0);
+    mainLayout->setContentsMargins(0,0,0,0);    
 
     /**********parte superior, logo, nombre y versión del programa*********/
     QWidget *headerWidget=new QWidget();
@@ -56,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
     //versión
     layoutHeader->addWidget(labelNombrePrograma);
     layoutHeader->addStretch();
-    layoutHeader->addWidget(new QLabel("Version 1.0"));
+    layoutHeader->addWidget(new QLabel("Version 1.0"));    
     /***********************************************************************/
 
     //Layout de los paneles del programa
@@ -65,6 +67,33 @@ MainWindow::MainWindow(QWidget *parent)
     //generar menú principal
     mainMenuPanel=new MainMenuGenerator(this);
     layoutPaneles->addWidget(mainMenuPanel);
+    layoutPaneles->setContentsMargins(6,0,6,0);
+
+    //generar QStackedLayout para los paneles que se muestran según el menú seleccionado
+    layoutMenuPaneles=new QStackedLayout();
+    layoutMenuPaneles->setContentsMargins(0,0,0,0);
+    DeviceWidget *deviceWidget=new DeviceWidget(this);
+    QWidget *secondPage=new QWidget();
+    secondPage->setStyleSheet("background-color: yellow;");
+    QWidget *thirdPage=new QWidget();
+    thirdPage->setStyleSheet("background-color: blue;");
+    QWidget *fourthPage=new QWidget();
+    fourthPage->setStyleSheet("background-color: gray;");
+    QWidget *fivethPage=new QWidget();
+    fivethPage->setStyleSheet("background-color: green;");
+    QWidget *sixthPage=new QWidget();
+    sixthPage->setStyleSheet("background-color: black;");
+    QWidget *empty=new QWidget();
+
+    layoutMenuPaneles->addWidget(deviceWidget);
+    layoutMenuPaneles->addWidget(secondPage);
+    layoutMenuPaneles->addWidget(thirdPage);
+    layoutMenuPaneles->addWidget(fourthPage);
+    layoutMenuPaneles->addWidget(fivethPage);
+    layoutMenuPaneles->addWidget(sixthPage);
+    layoutMenuPaneles->addWidget(empty);
+    layoutMenuPaneles->setCurrentIndex(6);
+    layoutPaneles->addLayout(layoutMenuPaneles);
 
     //agregar layout de paneles al principal
     mainLayout->addLayout(layoutPaneles);
@@ -79,6 +108,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::cambiarPanel(int index){
     qDebug()<<"Cambiando al panel: "<<index;
+    layoutMenuPaneles->setCurrentIndex(index);
 }
 
 MainWindow::~MainWindow() {
