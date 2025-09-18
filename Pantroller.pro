@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    gui/devices/pic18f4550.cpp \
     gui/devicewidget.cpp \
     gui/mainmenugenerator.cpp \
     gui/widgetsfactory.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     gui/mainwindow.cpp
 
 HEADERS += \
+    gui/devices/pic18f4550.h \
     gui/devicewidget.h \
     gui/widgetsfactory.h \
     gui/mainmenugenerator.h\

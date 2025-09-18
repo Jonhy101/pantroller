@@ -16,15 +16,25 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
     layoutPerifericos->setContentsMargins(0,10,0,10);
 
     //label de titulo
-    lblTitPeriferico=WidgetsFactory::createLblMenu("Configurar Periférico");
+    lblTitPeriferico=WidgetsFactory::createLblMenu("Microcontroladores");
     lblTitPeriferico->setAlignment(Qt::AlignLeft);
     layoutPerifericos->addWidget(lblTitPeriferico);
 
     //botón de configurar periferico
-    btnConfPeriferico=WidgetsFactory::createButton("Seleccionar Dispositivo");
+    btnConfPeriferico=WidgetsFactory::createButton("Configurar Periféricos");
     btnConfPeriferico->setProperty("index",0);
     btnConfPeriferico->setMinimumHeight(40);
     layoutPerifericos->addWidget(btnConfPeriferico);
+
+    //separador
+    layoutPerifericos->addWidget(WidgetsFactory::createMenuSeparator());
+
+    //botón de monitor serial
+    btnMonitorSerial=WidgetsFactory::createButton("Monitor Serial");
+    btnMonitorSerial->setProperty("index",1);
+    btnMonitorSerial->setMinimumHeight(40);
+    layoutPerifericos->addWidget(btnMonitorSerial);
+    layoutPerifericos->addStretch();
 
     //agregar widget contenedor al layout principal
     mainLayout->addWidget(containerMPerifericos);
@@ -43,7 +53,7 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     //botón de filtros
     btnFiltros=WidgetsFactory::createButton("Filtros");
-    btnFiltros->setProperty("index",1);
+    btnFiltros->setProperty("index",2);
     btnFiltros->setMinimumHeight(40);
     layoutHerramientas->addWidget(btnFiltros);
 
@@ -52,7 +62,7 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     //botón de divisor de voltaje
     btnDivVolt=WidgetsFactory::createButton("Divisor de Voltaje");
-    btnDivVolt->setProperty("index",2);
+    btnDivVolt->setProperty("index",3);
     btnDivVolt->setMinimumHeight(40);
     layoutHerramientas->addWidget(btnDivVolt);
 
@@ -61,7 +71,7 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     //botón de Convertidor de base numérica
     btnConBase=WidgetsFactory::createButton("Convertidor de Base Numérica");
-    btnConBase->setProperty("index",3);
+    btnConBase->setProperty("index",4);
     btnConBase->setMinimumHeight(40);
     layoutHerramientas->addWidget(btnConBase);
 
@@ -81,7 +91,7 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     //botón ayuda
     btnAyuda=WidgetsFactory::createButton("Ayuda");
-    btnAyuda->setProperty("index",4);
+    btnAyuda->setProperty("index",5);
     btnAyuda->setMinimumHeight(40);
     layoutSoporte->addWidget(btnAyuda);
 
@@ -90,14 +100,17 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     //botón acerca de
     btnAcercaDe=WidgetsFactory::createButton("Acerca de Pantroller");
-    btnAcercaDe->setProperty("index",5);
+    btnAcercaDe->setProperty("index",6);
     btnAcercaDe->setMinimumHeight(40);
     layoutSoporte->addWidget(btnAcercaDe);
+    layoutSoporte->addStretch();
 
     mainLayout->addWidget(containerSoporte);
+    mainLayout->addStretch();
 
     //Signals and slots
     connect(btnConfPeriferico,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
+    connect(btnMonitorSerial,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
     connect(btnFiltros,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
     connect(btnDivVolt,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
     connect(btnConBase,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);

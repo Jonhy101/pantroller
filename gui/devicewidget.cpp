@@ -7,6 +7,7 @@
 #include <QLineEdit>
 #include <QMessageBox>
 #include "logic/devices.h"
+#include "gui/devices/pic18f4550.h"
 
 DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent) {
 
@@ -29,13 +30,9 @@ DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent) {
     //QComboBox para busqueda y selección de dispositivo
     QStringList devicesList=Devices::getDevicesList();
     cbSelectDevice=WidgetsFactory::createComboBoxSearchable(devicesList);
-    WidgetsFactory::adjustComboBoxWidth(cbSelectDevice);
+    WidgetsFactory::adjustComboBoxWidth(cbSelectDevice);    //ajustar tamaño del list view porque al utilizar estilos este se desajusta
     layoutSeleccion->addWidget(cbSelectDevice,2);
     mainLayout->addWidget(panelSelDisp,1);
-    //Ajustar tamaño del combobox
-
-
-
 
     //botón para confirmar elección
     QHBoxLayout *layoutControls=new QHBoxLayout();      //layout para limitar el ancho del botón
@@ -45,16 +42,34 @@ DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent) {
     layoutControls->addStretch();
     layoutSelDisp->addSpacing(10);
     layoutSelDisp->addLayout(layoutControls);
+
+    //Panel de configuración de periferico y salida
+    QWidget *panelConf=new QWidget();
+    panelConf->setStyleSheet("background-color: #151E36");
+    mainLayout->addWidget(panelConf,2);
+
+    //Panel de características y selección de periférico
+    QWidget *panelOptions=new QWidget();
+    panelOptions->setStyleSheet("background-color: #151E36");
+    layoutSelDisp->addWidget(panelOptions);
+
+    layoutSelDisp->addStretch();            //subir todo hacia arriba
+
+
     //slot
     connect(btnConfirmDevice,&QPushButton::clicked,this,[=](){
         QString textoActual=cbSelectDevice->currentText();
         QString textoActualMayusculas=textoActual.toUpper();
         int index=cbSelectDevice->findText(textoActualMayusculas,Qt::MatchExactly);
-        if(index!=-1)
+        if(index!=-1){
             qDebug()<<"Se presionó el botón, el index es: "<<index;
+            if(textoActualMayusculas=="PIC18F4550"){
+                new GuiPic18f4550(panelOptions,panelConf,this);
+            }
+        }
         else{
             if(textoActualMayusculas.isEmpty()){
-                QMessageBox::critical(this,"Error","No has ingresado ningún dato");
+                QMessageBox::critical(this,"Error","No has ingresado ninguna referencia");
             }
             else{
                 QString errorText = "Error en la referencia seleccionada\nLa referencia: " + textoActualMayusculas + " no fue encontrada";
@@ -63,11 +78,6 @@ DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent) {
             }
         }
     });
-    layoutSelDisp->addStretch();
 
-    //Panel de configuración de periferico y salida
-    QWidget *panelConf=new QWidget();
-    panelConf->setStyleSheet("background-color: #151E36");
-    mainLayout->addWidget(panelConf,2);
 }
 

@@ -69,9 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
     layoutPaneles->addWidget(mainMenuPanel);
     layoutPaneles->setContentsMargins(6,0,6,0);
 
-    //generar QStackedLayout para los paneles que se muestran según el menú seleccionado
-    layoutMenuPaneles=new QStackedLayout();
-    layoutMenuPaneles->setContentsMargins(0,0,0,0);
+    //crear widgets que se utilizan según el index generado por el mainMenuPanel
     DeviceWidget *deviceWidget=new DeviceWidget(this);
     QWidget *secondPage=new QWidget();
     secondPage->setStyleSheet("background-color: yellow;");
@@ -83,19 +81,25 @@ MainWindow::MainWindow(QWidget *parent)
     fivethPage->setStyleSheet("background-color: green;");
     QWidget *sixthPage=new QWidget();
     sixthPage->setStyleSheet("background-color: black;");
-    QWidget *empty=new QWidget();
+    QWidget *seventhPage=new QWidget();
+    seventhPage->setStyleSheet("background-color: #2f2f2f;");
+    QWidget *empty=new QWidget();           //será la página por defecto
 
+    //generar QStackedLayout para los widgets o paneles creados
+    layoutMenuPaneles=new QStackedLayout();
+    layoutMenuPaneles->setContentsMargins(0,0,0,0);
     layoutMenuPaneles->addWidget(deviceWidget);
     layoutMenuPaneles->addWidget(secondPage);
     layoutMenuPaneles->addWidget(thirdPage);
     layoutMenuPaneles->addWidget(fourthPage);
     layoutMenuPaneles->addWidget(fivethPage);
     layoutMenuPaneles->addWidget(sixthPage);
+    layoutMenuPaneles->addWidget(seventhPage);
     layoutMenuPaneles->addWidget(empty);
-    layoutMenuPaneles->setCurrentIndex(6);
+    layoutMenuPaneles->setCurrentIndex(7);
     layoutPaneles->addLayout(layoutMenuPaneles);
 
-    //agregar layout de paneles al principal
+    // //agregar layout de paneles al principal
     mainLayout->addLayout(layoutPaneles);
 
     //subir todo hacia arriba

@@ -8,7 +8,7 @@
         <file>images/icons/dac_icon.png</file>
         <file>images/icons/eccp_icon.png</file>
         <file>images/icons/eeprom_icon.png</file>
-        <file>images/icons/esuart_icon.png</file>
+        <file>images/icons/eusart_icon.png</file>
         <file>images/icons/ext_interrupt_icon.png</file>
         <file>images/icons/interrupt_icon.png</file>
         <file>images/icons/mainLogo.png</file>
@@ -27,5 +27,14 @@
         <file>images/icons/down-arrow-lineEdit-Pressed.png</file>
         <file>images/icons/down-arrow-lineEdit.png</file>
         <file>images/icons/down-arrow-pressed.png</file>
+        <file>images/icons/hideIcon.png</file>
+        <file>images/icons/showIcon.png</file>
+        <file>images/icons/left-drow.png</file>
+        <file>images/icons/left-drow-pressed.png</file>
+        <file>images/icons/right-drow.png</file>
+        <file>images/icons/right-drow-pressed.png</file>
+    </qresource>
+    <qresource prefix="/imgDevices">
+        <file>images/img_devices/pic18f4550.jpg</file>
     </qresource>
 </RCC>

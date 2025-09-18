@@ -18,7 +18,7 @@ private slots:
 
 private:
     QLabel *lblTitPeriferico, *lblOtrasHerr, *lblSoporte;
-    QPushButton *btnConfPeriferico, *btnFiltros, *btnDivVolt, *btnConBase, *btnAyuda,
+    QPushButton *btnConfPeriferico, *btnMonitorSerial, *btnFiltros, *btnDivVolt, *btnConBase, *btnAyuda,
         *btnAcercaDe, *activeButton=nullptr;
 
     void actualizaEstado(QPushButton *newActiveButton);
