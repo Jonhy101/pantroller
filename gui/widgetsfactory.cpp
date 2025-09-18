@@ -142,11 +142,12 @@ QPushButton* WidgetsFactory::createButton(const QString &text, QWidget *parent){
     return btn;
 }
 
-QToolButton* WidgetsFactory::createBtnPeriphelal(const QString &text, const QString &iconPath, QWidget *parent){
+QToolButton* WidgetsFactory::createBtnPeriphelal(const QString &text, const QString &iconPath, const QString &textToolTip, QWidget *parent){
     QToolButton *myButton=new QToolButton(parent);
     myButton->setText(text);
     QIcon buttonIcon(iconPath);
     myButton->setIcon(buttonIcon);
+    myButton->setToolTip(textToolTip);
     myButton->setIconSize(QSize(64,64));
     myButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     myButton->setMinimumWidth(80);
@@ -349,6 +350,133 @@ QComboBox* WidgetsFactory::createComboBoxSearchable(const QStringList &itemList,
     return comboBox;
 }
 
+QScrollArea* WidgetsFactory::createQScrollArea(QWidget *widgetContainer, QWidget *parent){
+    QScrollArea *myScrollArea= new QScrollArea(parent);
+    myScrollArea->setWidget(widgetContainer);
+    myScrollArea->setWidgetResizable(true);
+    myScrollArea->setStyleSheet(R"(
+        /************** SCROLL VERTICAL **************/
+        QScrollBar:vertical {
+            background: #10192d;
+            width: 12px;
+            margin: 0px;
+            border: none;
+        }
+
+        QScrollBar::handle:vertical {
+            background: #273754;
+            min-height: 15px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        QScrollBar::handle:vertical:hover {
+            background: #354970;
+        }
+
+        QScrollBar::sub-line:vertical {
+            background: #273754;
+            height: 12px;
+            border: solid;
+        }
+
+        QScrollBar::add-line:vertical {
+            background: #273754;
+            height: 12px;
+            border: solid;
+        }
+
+        QScrollBar::up-arrow:vertical {
+            image: url(:/icons/images/icons/up-arrowIcon.png);
+            width: 12px;
+            height: 12px;
+        }
+
+        QScrollBar::up-arrow:vertical:pressed {
+            image: url(:/icons/images/icons/up-arrow-pressed.png);
+        }
+
+        QScrollBar::down-arrow:vertical {
+            image: url(:/icons/images/icons/down-arrowIcon.png);
+            width: 12px;
+            height: 12px;
+        }
+
+        QScrollBar::down-arrow:vertical:pressed {
+            image: url(:/icons/images/icons/down-arrow-pressed.png);
+        }
+
+        QScrollBar::add-page:vertical,
+        QScrollBar::sub-page:vertical {
+            background: none;
+        }
+
+        /************** SCROLL HORIZONTAL **************/
+        QScrollBar:horizontal {
+            background: #10192d;
+            height: 12px;
+            margin: 0px;
+            border: none;
+        }
+
+        QScrollBar::handle:horizontal {
+            background: #273754;
+            min-width: 15px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            margin-left: 12px;
+            margin-right: 12px;
+        }
+
+        QScrollBar::handle:horizontal:hover {
+            background: #354970;
+        }
+
+        QScrollBar::sub-line:horizontal {
+            background: #273754;
+            width: 12px;
+            border: solid;
+            subcontrol-origin: margin;
+            subcontrol-position: left;    /*Esto es necesario para que se pueda ver*/
+        }
+
+        QScrollBar::add-line:horizontal {
+            background: #273754;
+            width: 12px;
+            border: solid;
+        }
+
+        QScrollBar::left-arrow:horizontal {
+            image: url(:/icons/images/icons/left-drow.png);
+            width: 12px;
+            height: 12px;
+        }
+
+        QScrollBar::left-arrow:horizontal:pressed {
+            image: url(:/icons/images/icons/left-drow-pressed.png);
+        }
+
+        QScrollBar::right-arrow:horizontal {
+            image: url(:/icons/images/icons/right-drow.png);
+            width: 12px;
+            height: 12px;
+        }
+
+        QScrollBar::right-arrow:horizontal:pressed {
+            image: url(:/icons/images/icons/right-drow-pressed.png);
+        }
+
+        QScrollBar::add-page:horizontal,
+        QScrollBar::sub-page:horizontal {
+            background: none;
+        }
+    )");
+    return myScrollArea;
+}
 
 void WidgetsFactory::adjustComboBoxWidth(QComboBox* comboBox){
     //obtener los textos en forma de QStringList
@@ -395,63 +523,63 @@ QLabel* WidgetsFactory::createLblGui(const QString &text, QWidget *parent){
 
 
 QToolButton* WidgetsFactory::createBtnAdc(QWidget *parent){
-    return createBtnPeriphelal("ADC",":/icons/images/icons/adc_icon.png",parent);
+    return createBtnPeriphelal("ADC",":/icons/images/icons/adc_icon.png","Convertidor Analógico-Digital",parent);
 }
 
-QToolButton* WidgetsFactory::createBtnCpp(QWidget *parent){
-    return createBtnPeriphelal("CPP",":/icons/images/icons/ccp_icon.png",parent);
+QToolButton* WidgetsFactory::createBtnCcp(QWidget *parent){
+    return createBtnPeriphelal("CPP",":/icons/images/icons/ccp_icon.png","Captura, comparación y PWM",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnComparator(QWidget *parent){
-    return createBtnPeriphelal("Comparator",":/icons/images/icons/comparator_icon.png",parent);
+    return createBtnPeriphelal("Comparator",":/icons/images/icons/comparator_icon.png","Comparador Analógico",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnComparatorVRef(QWidget *parent){
-    return createBtnPeriphelal("Comparator Vref",":/icons/images/icons/comparator_volt_ref_icon.png",parent);
+    return createBtnPeriphelal("Comp. Vref",":/icons/images/icons/comparator_volt_ref_icon.png","Voltaje de Ref del Comparador Analógico",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnCrystal(QWidget *parent){
-    return createBtnPeriphelal("Oscillator",":/icons/images/icons/crystal_icon.png",parent);
+    return createBtnPeriphelal("Oscillator",":/icons/images/icons/crystal_icon.png", "Reloj del Microcontrolador",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnDac(QWidget *parent){
-    return createBtnPeriphelal("DAC",":/icons/images/icons/dac_icon.png",parent);
+    return createBtnPeriphelal("DAC",":/icons/images/icons/dac_icon.png","Comparador Digital-Analógico",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnEccp(QWidget *parent){
-    return createBtnPeriphelal("ECCP",":/icons/images/icons/eccp_icon.png",parent);
+    return createBtnPeriphelal("ECCP",":/icons/images/icons/eccp_icon.png","Captura, comparación y pwm Mejorado",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnEeprom(QWidget *parent){
-    return createBtnPeriphelal("EEPROM",":/icons/images/icons/eeprom_icon.png",parent);
+    return createBtnPeriphelal("EEPROM",":/icons/images/icons/eeprom_icon.png", "Lectura y escribura en EEPROM interna",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnEusart(QWidget *parent){
-    return createBtnPeriphelal("EUSART",":/icons/images/icons/eusart_icon.png",parent);
+    return createBtnPeriphelal("EUSART",":/icons/images/icons/eusart_icon.png","Puerto Serie EUSART",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnExtInt(QWidget *parent){
-    return createBtnPeriphelal("External Interrupt",":/icons/images/icons/ext_interrupt_icon.png",parent);
+    return createBtnPeriphelal("External Interrupt",":/icons/images/icons/ext_interrupt_icon.png","Configuración de Interrupción Externa",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnInt(QWidget *parent){
-    return createBtnPeriphelal("Interrupts",":/icons/images/icons/interrupt_icon.png",parent);
+    return createBtnPeriphelal("Interrupts",":/icons/images/icons/interrupt_icon.png","Configuración de Interrupciones",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnMssp(QWidget *parent){
-    return createBtnPeriphelal("MSSP",":/icons/images/icons/mssp_icon.png",parent);
+    return createBtnPeriphelal("MSSP",":/icons/images/icons/mssp_icon.png","Puerto Serie MSSP",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnTimers(QWidget *parent){
-    return createBtnPeriphelal("Timers",":/icons/images/icons/timer_icon.png",parent);
+    return createBtnPeriphelal("Timers",":/icons/images/icons/timer_icon.png","Configuración de Timers",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnUsart(QWidget *parent){
-    return createBtnPeriphelal("USART",":/icons/images/icons/usart_icon.png",parent);
+    return createBtnPeriphelal("USART",":/icons/images/icons/usart_icon.png","Puerto Serie USART",parent);
 }
 
 QToolButton* WidgetsFactory::createBtnUSB(QWidget *parent){
-    return createBtnPeriphelal("USB",":/icons/images/icons/usb_icon.png",parent);
+    return createBtnPeriphelal("USB",":/icons/images/icons/usb_icon.png","Puerto Serie USB",parent);
 }
 
 

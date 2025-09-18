@@ -114,227 +114,7 @@ GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget 
     QGridLayout *layoutMenuPerip=new QGridLayout(menuPeripContainer);
     mainLayoutOptions->addWidget(menuPeripContainer);
     //Agregar scroll porque son varios botones y no alcanzan en pantallas estandar
-    QScrollArea *scrollAreaPeripContainer=new QScrollArea;
-    scrollAreaPeripContainer->setWidget(menuPeripContainer);
-    scrollAreaPeripContainer->setWidgetResizable(true);
-    // scrollAreaPeripContainer->setStyleSheet(R"(
-
-
-    //     QScrollBar::drop-down {
-    //         subcontrol-origin: padding;
-    //         subcontrol-position: top right;
-    //         width: 25px;                    /* Ancho del área de la flecha */
-    //         border-left: 1px solid #999999;
-    //         background-color: #f0f0f0;
-    //     }
-
-    //     /* Imagen de la flecha abajo */
-    //     QScrollBar::down-arrow {
-    //         image: url(:/icons/images/icons/down-arrow-lineEdit.png);
-    //         width: 12px;
-    //         height: 12px;
-    //     }
-
-    //     /*Imagen de la flecha al presionar con el mouse sobre ella*/
-    //     QScrollBar::down-arrow:pressed{
-    //         image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
-    //     }
-
-    //     /* Color base del scroll*/
-    //     QScrollBar:vertical {
-    //         background: #10192d;         /* Fondo del canal donde se desliza la barra*/
-    //         width: 12px;                 /* Ancho del scroll */
-    //         margin: 0px;
-    //         border: none;
-    //     }
-
-    //     /* Estilos de la barra */
-    //     QScrollBar::handle:vertical {
-    //         background: #273754;
-    //         min-height: 15px;
-    //         border: none;
-    //         border-radius: 4px;
-    //         outline: none;
-    //         margin-top: 12px;           /*con esto la barra no se superpone sobre la flecha superior*/
-    //         margin-bottom: 12px;        /*con esto la barra no se superpone sobre la flecha inferior*/
-    //     }
-
-    //     /*Estilos al pasar el mouse sobre la barra*/
-    //     QScrollBar::handle:vertical:hover{
-    //         background: #354970;
-    //     }
-
-    //     /* Botón superior (flecha hacia arriba) */
-    //     QScrollBar::sub-line:vertical {
-    //         background: #273754;
-    //         height: 12px;
-    //         border: solid;
-    //     }
-
-    //     /* Flecha hacia arriba arriba */
-    //     QScrollBar::up-arrow:vertical {
-    //         image: url(:/icons/images/icons/up-arrowIcon.png);
-    //         width: 12px;
-    //         height: 12px;
-    //     }
-
-    //     /*Flecha hacia arriba al presionar mouse sobre ella*/
-    //     QScrollBar::up-arrow:vertical:pressed {
-    //         image: url(:/icons/images/icons/up-arrow-pressed.png);
-    //     }
-
-    //     /* Botón inferior (flecha hacia abajo) */
-    //     QScrollBar::add-line:vertical {
-    //         background: #273754;
-    //         height: 12px;
-    //         border: solid;
-    //     }
-
-    //     /* Flecha abajo */
-    //     QScrollBar::down-arrow:vertical {
-    //         image: url(:/icons/images/icons/down-arrowIcon.png);  /* Puedes reemplazar con una imagen personalizada */
-    //         width: 12px;
-    //         height: 12px;
-    //     }
-
-    //     /*Flecha abajo al presionar el mouse sobre ella*/
-    //     QScrollBar::down-arrow:vertical:pressed {
-    //         image: url(:/icons/images/icons/down-arrow-pressed.png);
-    //     }
-
-    //     /* Sin esto aparece un fondo creado por el sistema*/
-    //     QScrollBar::add-page:vertical,
-    //     QScrollBar::sub-page:vertical {
-    //         background: none;               /*!!Imporante, debe estar en "none" para que se visualicen las flechas*/
-    //     }
-
-
-
-    // )");
-    scrollAreaPeripContainer->setStyleSheet(R"(
-
-        /************** SCROLL VERTICAL **************/
-        QScrollBar:vertical {
-            background: #10192d;
-            width: 12px;
-            margin: 0px;
-            border: none;
-        }
-
-        QScrollBar::handle:vertical {
-            background: #273754;
-            min-height: 15px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            margin-top: 12px;
-            margin-bottom: 12px;
-        }
-
-        QScrollBar::handle:vertical:hover {
-            background: #354970;
-        }
-
-        QScrollBar::sub-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
-
-        QScrollBar::add-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
-
-        QScrollBar::up-arrow:vertical {
-            image: url(:/icons/images/icons/up-arrowIcon.png);
-            width: 12px;
-            height: 12px;
-        }
-
-        QScrollBar::up-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/up-arrow-pressed.png);
-        }
-
-        QScrollBar::down-arrow:vertical {
-            image: url(:/icons/images/icons/down-arrowIcon.png);
-            width: 12px;
-            height: 12px;
-        }
-
-        QScrollBar::down-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/down-arrow-pressed.png);
-        }
-
-        QScrollBar::add-page:vertical,
-        QScrollBar::sub-page:vertical {
-            background: none;
-        }
-
-        /************** SCROLL HORIZONTAL **************/
-        QScrollBar:horizontal {
-            background: #10192d;
-            height: 12px;
-            margin: 0px;
-            border: none;
-        }
-
-        QScrollBar::handle:horizontal {
-            background: #273754;
-            min-width: 15px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            margin-left: 12px;
-            margin-right: 12px;
-        }
-
-        QScrollBar::handle:horizontal:hover {
-            background: #354970;
-        }
-
-        QScrollBar::sub-line:horizontal {
-            background: #273754;
-            width: 12px;
-            border: solid;
-            subcontrol-origin: margin;
-            subcontrol-position: left;    /*Esto es necesario para que se pueda ver*/
-        }
-
-        QScrollBar::add-line:horizontal {
-            background: #273754;
-            width: 12px;
-            border: solid;
-        }
-
-        QScrollBar::left-arrow:horizontal {
-            image: url(:/icons/images/icons/left-drow.png);
-            width: 12px;
-            height: 12px;
-        }
-
-        QScrollBar::left-arrow:horizontal:pressed {
-            image: url(:/icons/images/icons/left-drow-pressed.png);
-        }
-
-        QScrollBar::right-arrow:horizontal {
-            image: url(:/icons/images/icons/right-drow.png);
-            width: 12px;
-            height: 12px;
-        }
-
-        QScrollBar::right-arrow:horizontal:pressed {
-            image: url(:/icons/images/icons/right-drow-pressed.png);
-        }
-
-        QScrollBar::add-page:horizontal,
-        QScrollBar::sub-page:horizontal {
-            background: none;
-        }
-
-    )");
-
+    QScrollArea *scrollAreaPeripContainer=WidgetsFactory::createQScrollArea(menuPeripContainer);
     mainLayoutOptions->addWidget(scrollAreaPeripContainer);
 
     //botón oscillator
@@ -354,7 +134,7 @@ GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget 
     layoutMenuPerip->addWidget(tBtnTimers,0,3);
 
     //botón CPP
-    tBtnCpp=WidgetsFactory::createBtnCpp();
+    tBtnCpp=WidgetsFactory::createBtnCcp();
     layoutMenuPerip->addWidget(tBtnCpp,1,0);
 
     //botón ECPP
@@ -394,6 +174,8 @@ GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget 
     layoutMenuPerip->setColumnMinimumWidth(2,80);
     layoutMenuPerip->setColumnStretch(3,0);
     layoutMenuPerip->setColumnMinimumWidth(3,80);
+
+
     //Componentes del panelConf
     QVBoxLayout *mainLayoutConf=new QVBoxLayout(panelConf);
     labelTest2=new QLabel("Panel de configuración");

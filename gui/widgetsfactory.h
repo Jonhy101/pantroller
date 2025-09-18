@@ -8,6 +8,7 @@
 #include <QStringList>
 #include <QTextEdit>
 #include <QToolButton>
+#include <QScrollArea>
 
 class WidgetsFactory {
 public:
@@ -17,7 +18,7 @@ public:
 
     static QPushButton* createButton(const QString &text,QWidget *parent=nullptr);
 
-    static QToolButton* createBtnPeriphelal(const QString &text, const QString &iconPath, QWidget *parent=nullptr);
+    static QToolButton* createBtnPeriphelal(const QString &text, const QString &iconPath, const QString &textToolTip, QWidget *parent=nullptr);
 
     static QPushButton* createControlButton(const QString &text, QWidget *parent=nullptr);
 
@@ -25,6 +26,7 @@ public:
 
     static QComboBox* createComboBoxSearchable(const QStringList &itemList, QWidget *parent=nullptr);
 
+    static QScrollArea* createQScrollArea(QWidget* widgetContainer, QWidget *parent=nullptr);
     /**
      * @brief Ajusta el ancho del desplegable del QComboBox en función del contenido más largo.
      * @details Se debe utilizar cuando se cambian lo estilos del QComboBox con qss.
@@ -39,7 +41,7 @@ public:
     /*Botones de periféricos*/
     static QToolButton* createBtnAdc(QWidget *parent=nullptr);
 
-    static QToolButton* createBtnCpp(QWidget *parent=nullptr);
+    static QToolButton* createBtnCcp(QWidget *parent=nullptr);
 
     static QToolButton* createBtnComparator(QWidget *parent=nullptr);
 
