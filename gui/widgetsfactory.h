@@ -9,12 +9,17 @@
 #include <QTextEdit>
 #include <QToolButton>
 #include <QScrollArea>
+#include <QRadioButton>
+#include <QCheckBox>
+#include <QLineEdit>
 
 class WidgetsFactory {
 public:
     static QLabel* createLblMenu(const QString &text,QWidget *parent=nullptr);
 
     static QTextEdit* createTextEditInfo(const QString &text, QWidget *parent=nullptr);
+
+    static QLineEdit* createLineEditForm(QWidget *parent=nullptr);
 
     static QPushButton* createButton(const QString &text,QWidget *parent=nullptr);
 
@@ -25,6 +30,10 @@ public:
     static QPushButton* createIconButton(QWidget *parent=nullptr);
 
     static QComboBox* createComboBoxSearchable(const QStringList &itemList, QWidget *parent=nullptr);
+
+    static QComboBox* createComboBoxNoSearchable(const QStringList &itemList, QWidget *parent=nullptr);
+
+    static QCheckBox* createCheckBox(const QString &text, QWidget *parent=nullptr);
 
     static QScrollArea* createQScrollArea(QWidget* widgetContainer, QWidget *parent=nullptr);
     /**
@@ -37,6 +46,8 @@ public:
     static QFrame* createMenuSeparator();
 
     static QLabel* createLblGui(const QString &text,QWidget *parent=nullptr);
+
+    static QLabel* createLblForm(const QString &text, QWidget *parent=nullptr);
 
     /*Botones de periféricos*/
     static QToolButton* createBtnAdc(QWidget *parent=nullptr);
@@ -69,6 +80,7 @@ public:
 
     static QToolButton* createBtnUSB(QWidget *parent=nullptr);
 
+    static QRadioButton* createRBtn(const QString &text, QWidget *parent=nullptr);
 };
 
 #endif // WIDGETSFACTORY_H

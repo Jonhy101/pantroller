@@ -33,6 +33,7 @@
         <file>images/icons/left-drow-pressed.png</file>
         <file>images/icons/right-drow.png</file>
         <file>images/icons/right-drow-pressed.png</file>
+        <file>images/icons/helpIcon.png</file>
     </qresource>
     <qresource prefix="/imgDevices">
         <file>images/img_devices/pic18f4550.jpg</file>
