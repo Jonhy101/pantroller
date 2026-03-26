@@ -106,7 +106,7 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addStretch();
 
     //Signals and slots
-    connect(mainMenuPanel,MainMenuGenerator::menuOptionSelected,this,&MainWindow::cambiarPanel);
+    connect(mainMenuPanel,&MainMenuGenerator::menuOptionSelected,this,&MainWindow::cambiarPanel);
 
 }
 

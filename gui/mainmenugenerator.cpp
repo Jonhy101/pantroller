@@ -109,13 +109,13 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
     mainLayout->addStretch();
 
     //Signals and slots
-    connect(btnConfPeriferico,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
-    connect(btnMonitorSerial,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
-    connect(btnFiltros,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
-    connect(btnDivVolt,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
-    connect(btnConBase,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
-    connect(btnAyuda,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
-    connect(btnAcercaDe,&QPushButton::clicked,this,MainMenuGenerator::onMenuButtonClicked);
+    connect(btnConfPeriferico,&QPushButton::clicked,this,&MainMenuGenerator::onMenuButtonClicked);
+    connect(btnMonitorSerial,&QPushButton::clicked,this,&MainMenuGenerator::onMenuButtonClicked);
+    connect(btnFiltros,&QPushButton::clicked,this,&MainMenuGenerator::onMenuButtonClicked);
+    connect(btnDivVolt,&QPushButton::clicked,this,&MainMenuGenerator::onMenuButtonClicked);
+    connect(btnConBase,&QPushButton::clicked,this,&MainMenuGenerator::onMenuButtonClicked);
+    connect(btnAyuda,&QPushButton::clicked,this,&MainMenuGenerator::onMenuButtonClicked);
+    connect(btnAcercaDe,&QPushButton::clicked,this,&MainMenuGenerator::onMenuButtonClicked);
 }
 
 void MainMenuGenerator::onMenuButtonClicked(){

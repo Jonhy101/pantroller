@@ -156,7 +156,7 @@ void GuiPic18f4550::periphealMenu(){
     //botón oscillator
     tBtnOscillator=WidgetsFactory::createBtnCrystal();
     layoutMenuPerip->addWidget(tBtnOscillator,0,0);
-    connect(tBtnOscillator,&QToolButton::clicked,this,GuiPic18f4550::clickedBtnOscillator);
+    connect(tBtnOscillator,&QToolButton::clicked,this,&GuiPic18f4550::clickedBtnOscillator);
 
     //botón eeprom
     tBtnEEprom=WidgetsFactory::createBtnEeprom();
