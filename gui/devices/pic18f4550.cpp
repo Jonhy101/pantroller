@@ -31,10 +31,10 @@ GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget 
     // layoutImgContainer->addWidget(view);
 
     //Caracteristicas del dispositivo
-    setupFeatures();
+   setupFeatures();
 
     //Menú de periféricos disponibles
-    periphealMenu();
+   periphealMenu();
 
 //Componentes del panelConf
     // QVBoxLayout *mainLayoutConf=new QVBoxLayout(panelConf);
@@ -43,6 +43,7 @@ GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget 
     //QTabWidget para mostrar panel de configuración
     mainLayoutConf=new QVBoxLayout(panelConf);
     tabWidgetPeripheal=new QTabWidget();
+    tabWidgetPeripheal->setProperty("tipo","QTabWidget-conf");
     mainLayoutConf->addWidget(tabWidgetPeripheal);
 }
 
@@ -58,7 +59,7 @@ void GuiPic18f4550::setupPinout(){
 
     //Contenedor de imagen
     QWidget *imgContainer=new QWidget();
-    imgContainer->setStyleSheet("background-color: #10192D");
+    //imgContainer->setStyleSheet("background-color: #10192D");
     imgContainer->hide();
     QVBoxLayout *layoutImgContainer=new QVBoxLayout(imgContainer);
     mainLayoutOptions->addWidget(imgContainer);
@@ -139,8 +140,8 @@ void GuiPic18f4550::setupFeatures(){
 
 void GuiPic18f4550::periphealMenu(){
     //widget contenedor y layout
-    QWidget *menuPeripContainer=new QWidget();
-    menuPeripContainer->setStyleSheet("background-color: #10192D");
+    QWidget *menuPeripContainer=new QWidget();    
+    menuPeripContainer->setProperty("tipo","menu-Peripheal-Container");
     mainLayoutOptions->addWidget(menuPeripContainer);
     QGridLayout *layoutMenuPerip=new QGridLayout(menuPeripContainer);
 

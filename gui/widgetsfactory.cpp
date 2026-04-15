@@ -1,13 +1,16 @@
 #include "widgetsfactory.h"
 #include <QLineEdit>
 #include <QAbstractItemView>
+#include <QScrollBar>
+#include <QListView>
 
 QLabel* WidgetsFactory::createLblMenu(const QString &text, QWidget *parent){
     QLabel *lbl=new QLabel(text,parent);
-    lbl->setStyleSheet(R"(
-        font-size: 17px;
-        padding-left: 5px;
-    )");
+    lbl->setProperty("tipo","label-menu");
+    // lbl->setStyleSheet(R"(
+    //     font-size: 17px;
+    //     padding-left: 5px;
+    // )");
     return lbl;
 }
 
@@ -15,144 +18,168 @@ QTextEdit* WidgetsFactory::createTextEditInfo(const QString &text, QWidget *pare
     QTextEdit *textEdit=new QTextEdit(parent);
     textEdit->setPlainText(text);
     textEdit->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    textEdit->setStyleSheet(R"(
-        QTextEdit{
-            background-color: #10192D;
-            padding-left: 5px;
-            border: none;
-        }
-        /* Flecha de despliegue del QComboBox */
-        QScrollBar::drop-down {
-            subcontrol-origin: padding;
-            subcontrol-position: top right;
-            width: 25px;                    /* Ancho del área de la flecha */
-            border-left: 1px solid #999999;
-            background-color: #f0f0f0;
-        }
+    // textEdit->setStyleSheet(R"(
+    //     QTextEdit{
+    //         background-color: #10192D;
+    //         padding-left: 5px;
+    //         border: none;
+    //     }
+    //     /* Flecha de despliegue del QComboBox */
+    //     QScrollBar::drop-down {
+    //         subcontrol-origin: padding;
+    //         subcontrol-position: top right;
+    //         width: 25px;                    /* Ancho del área de la flecha */
+    //         border-left: 1px solid #999999;
+    //         background-color: #f0f0f0;
+    //     }
 
-        /* Imagen de la flecha */
-        QScrollBar::down-arrow {
-            image: url(:/icons/images/icons/down-arrow-lineEdit.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Imagen de la flecha */
+    //     QScrollBar::down-arrow {
+    //         image: url(:/icons/images/icons/down-arrow-lineEdit.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Imagen de la flecha al presionar con el mouse sobre ella*/
-        QScrollBar::down-arrow:pressed{
-            image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
-        }
+    //     /*Imagen de la flecha al presionar con el mouse sobre ella*/
+    //     QScrollBar::down-arrow:pressed{
+    //         image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
+    //     }
 
-        /* Color base del scroll*/
-        QScrollBar:vertical {
-            background: #10192d;         /* Fondo del canal donde se desliza la barra*/
-            width: 12px;                 /* Ancho del scroll */
-            margin: 0px;
-            border: none;
-        }
+    //     /* Color base del scroll*/
+    //     QScrollBar:vertical {
+    //         background: #10192d;         /* Fondo del canal donde se desliza la barra*/
+    //         width: 12px;                 /* Ancho del scroll */
+    //         margin: 0px;
+    //         border: none;
+    //     }
 
-        /* Estilos de la barra */
-        QScrollBar::handle:vertical {
-            background: #273754;
-            min-height: 15px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            margin-top: 12px;           /*con esto la barra no se superpone sobre la flecha superior*/
-            margin-bottom: 12px;        /*con esto la barra no se superpone sobre la flecha inferior*/
-        }
+    //     /* Estilos de la barra */
+    //     QScrollBar::handle:vertical {
+    //         background: #273754;
+    //         min-height: 15px;
+    //         border: none;
+    //         border-radius: 4px;
+    //         outline: none;
+    //         margin-top: 12px;           /*con esto la barra no se superpone sobre la flecha superior*/
+    //         margin-bottom: 12px;        /*con esto la barra no se superpone sobre la flecha inferior*/
+    //     }
 
-        /*Estilos al pasar el mouse sobre la barra*/
-        QScrollBar::handle:vertical:hover{
-            background: #354970;
-        }
+    //     /*Estilos al pasar el mouse sobre la barra*/
+    //     QScrollBar::handle:vertical:hover{
+    //         background: #354970;
+    //     }
 
-        /* Botón superior (flecha hacia arriba) */
-        QScrollBar::sub-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     /* Botón superior (flecha hacia arriba) */
+    //     QScrollBar::sub-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        /* Flecha hacia arriba arriba */
-        QScrollBar::up-arrow:vertical {
-            image: url(:/icons/images/icons/up-arrowIcon.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Flecha hacia arriba arriba */
+    //     QScrollBar::up-arrow:vertical {
+    //         image: url(:/icons/images/icons/up-arrowIcon.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Flecha hacia arriba al presionar mouse sobre ella*/
-        QScrollBar::up-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/up-arrow-pressed.png);
-        }
+    //     /*Flecha hacia arriba al presionar mouse sobre ella*/
+    //     QScrollBar::up-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/up-arrow-pressed.png);
+    //     }
 
-        /* Botón inferior (flecha hacia abajo) */
-        QScrollBar::add-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     /* Botón inferior (flecha hacia abajo) */
+    //     QScrollBar::add-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        /* Flecha abajo */
-        QScrollBar::down-arrow:vertical {
-            image: url(:/icons/images/icons/down-arrowIcon.png);  /* Puedes reemplazar con una imagen personalizada */
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Flecha abajo */
+    //     QScrollBar::down-arrow:vertical {
+    //         image: url(:/icons/images/icons/down-arrowIcon.png);  /* Puedes reemplazar con una imagen personalizada */
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Flecha abajo al presionar el mouse sobre ella*/
-        QScrollBar::down-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/down-arrow-pressed.png);
-        }
+    //     /*Flecha abajo al presionar el mouse sobre ella*/
+    //     QScrollBar::down-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/down-arrow-pressed.png);
+    //     }
 
-        /* Sin esto aparece un fondo creado por el sistema*/
-        QScrollBar::add-page:vertical,
-        QScrollBar::sub-page:vertical {
-            background: none;               /*!!Imporante, debe estar en "none" para que se visualicen las flechas*/
-        }
+    //     /* Sin esto aparece un fondo creado por el sistema*/
+    //     QScrollBar::add-page:vertical,
+    //     QScrollBar::sub-page:vertical {
+    //         background: none;               /*!!Imporante, debe estar en "none" para que se visualicen las flechas*/
+    //     }
 
-    )");
+    // )");
+    // Asignar propiedad al QTextEdit
+    textEdit->setProperty("tipo", "text-Edit");
+
+    // Propagar propiedad al QScrollBar vertical hijo
+    QScrollBar* vScroll = textEdit->verticalScrollBar();
+    if (vScroll) {
+        vScroll->setProperty("tipo", "text-Edit-scroll");
+        // Forzar recálculo del estilo después de setProperty
+        // vScroll->style()->unpolish(vScroll);
+        // vScroll->style()->polish(vScroll);
+    }
+
+    // Forzar recálculo del estilo del QTextEdit también
+    // textEdit->style()->unpolish(textEdit);
+    // textEdit->style()->polish(textEdit);
     return textEdit;
 }
 
 QLineEdit* WidgetsFactory::createLineEditForm(QWidget *parent){
     QLineEdit *myQLineEdit=new QLineEdit(parent);
     myQLineEdit->setAlignment(Qt::AlignRight);
-    myQLineEdit->setStyleSheet(R"(
-        QLineEdit{
-            font-size: 13px;
-            font-weight: bold;
-            background-color: #FFFFFF;
-            color: #10192D;
-            border: none;
-        }
-    )");
+    myQLineEdit->setProperty("tipo","form-LineEdit");
+
+    // myQLineEdit->setStyleSheet(R"(
+    //     QLineEdit{
+    //         font-size: 13px;
+    //         font-weight: bold;
+    //         background-color: #FFFFFF;
+    //         color: #10192D;
+    //         border: none;
+    //     }
+    // )");
     return myQLineEdit;
 }
 
+/*Crea buttons para el menú principal
+ *
+ */
 QPushButton* WidgetsFactory::createButton(const QString &text, QWidget *parent){
     QPushButton *btn=new QPushButton(text,parent);
-    btn->setStyleSheet(R"(
-        QPushButton{
-            background-color: #1F2B42;
-            border-style: none;
-            font-size: 15px;
-            text-align: left;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+    btn->setProperty("tipo","main-menu-button");
+    // btn->setStyleSheet(R"(
+    //     QPushButton{
+    //         background-color: #1F2B42;
+    //         border: none;
+    //         font-size: 15px;
+    //         text-align: left;
+    //         padding-left: 15px;
+    //         padding-right: 15px;
+    //     }
 
-        QPushButton:hover{
-            background-color: #354970;
-        }
+    //     QPushButton:hover{
+    //         background-color: #354970;
+    //     }
 
-        QPushButton:pressed{
-            background-color: #273754;
-        }
+    //     QPushButton:pressed{
+    //         background-color: #273754;
+    //     }
 
-        QPushButton:checked{
-            background-color: #273754;
-        }
-    )");
+    //     QPushButton:checked{
+    //         background-color: #274372;
+    //         border-style: solid;
+    //         border-width: 0px 0px 0px 4px;
+    //         border-left-color: #4e7fe3;
+    //     }
+    // )");
     btn->setCheckable(true);
     return btn;
 }
@@ -166,194 +193,210 @@ QToolButton* WidgetsFactory::createBtnPeriphelal(const QString &text, const QStr
     myButton->setIconSize(QSize(64,64));
     myButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     myButton->setMinimumWidth(80);
-    myButton->setStyleSheet(R"(
-        QToolButton{
-            background-color: #10192D;
-            border: 2px solid #3056AB;
-            border-radius:5px;
-        }
+    myButton->setProperty("tipo","perip-button");
+    // myButton->setStyleSheet(R"(
+    //     QToolButton{
+    //         background-color: #10192D;
+    //         border: 2px solid #3056AB;
+    //         border-radius:5px;
+    //     }
 
-        QToolButton:hover{
-            background-color: #233661;
-        }
+    //     QToolButton:hover{
+    //         background-color: #233661;
+    //     }
 
-        QToolButton:pressed{
-            background-color: #273754;;
-        }
-    )");
+    //     QToolButton:pressed{
+    //         background-color: #273754;;
+    //     }
+    // )");
 
     return myButton;
 }
 
 QPushButton* WidgetsFactory::createControlButton(const QString &text, QWidget *parent){
     QPushButton *btnControl=new QPushButton(text,parent);
-    btnControl->setStyleSheet(R"(
-        QPushButton{
-            background-color: #4E7FE3;
-            border-style: none;
-            border-radius: 5px;
-            font-size: 15px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+    // btnControl->setStyleSheet(R"(
+    //     QPushButton{
+    //         background-color: #4E7FE3;
+    //         border-style: none;
+    //         border-radius: 5px;
+    //         font-size: 15px;
+    //         padding-left: 15px;
+    //         padding-right: 15px;
+    //     }
 
-        QPushButton::disabled{
-            background-color: #86a5e3;
-            color: #595959;
-        }
+    //     QPushButton::disabled{
+    //         background-color: #86a5e3;
+    //         color: #595959;
+    //     }
 
-        QPushButton:hover{
-            background-color: #578bf7;
-        }
+    //     QPushButton:hover{
+    //         background-color: #578bf7;
+    //     }
 
-        QPushButton:pressed{
-            background-color: #426cc2;
-        }
-    )");
+    //     QPushButton:pressed{
+    //         background-color: #426cc2;
+    //     }
+    // )");
+    btnControl->setProperty("tipo","control-button");
     btnControl->setFixedHeight(30);
     return btnControl;
 }
 
 QPushButton* WidgetsFactory::createIconButton(QWidget *parent){
     QPushButton *btnIcon=new QPushButton(parent);
-    btnIcon->setStyleSheet(R"(
-        QPushButton{
-            background-color: transparent;
-            border-style: none;
-            border-radius: 5px;
-            padding: 5px;
-        }
+    btnIcon->setProperty("tipo","button-icon");
+    // btnIcon->setStyleSheet(R"(
+    //     QPushButton{
+    //         background-color: transparent;
+    //         border-style: none;
+    //         border-radius: 5px;
+    //         padding: 5px;
+    //     }
 
-        QPushButton:hover{
-            background-color: #354970;
-        }
+    //     QPushButton:hover{
+    //         background-color: #354970;
+    //     }
 
-        QPushButton:pressed{
-            background-color: #273754;
-        }
-    )");
+    //     QPushButton:pressed{
+    //         background-color: #273754;
+    //     }
+    // )");
     return btnIcon;
 }
 
 QComboBox* WidgetsFactory::createComboBoxSearchable(const QStringList &itemList, QWidget *parent){
-    QComboBox *comboBox=new QComboBox(parent);
-    comboBox->setStyleSheet(R"(
-        /* Estilo principal del QComboBox (parte visible antes de desplegar) */
-        QComboBox {
-            background-color: #ffffff;
-            border: none;
-            color: #10192D;
-            font-size: 15px;
-            margin: 0px;
-        }
+    QComboBox *comboBox=new QComboBox(parent);    
+    // comboBox->setStyleSheet(R"(
+    //     /* Estilo principal del QComboBox (parte visible antes de desplegar) */
+    //     QComboBox {
+    //         background-color: #ffffff;
+    //         border: none;
+    //         color: #10192D;
+    //         font-size: 15px;
+    //         margin: 0px;
+    //     }
 
-        /* Flecha de despliegue del QComboBox */
-        QComboBox::drop-down {
-            subcontrol-origin: padding;
-            subcontrol-position: top right;
-            width: 25px;                    /* Ancho del área de la flecha */
-            border-left: 1px solid #999999;
-            background-color: #f0f0f0;
-        }
+    //     /* Flecha de despliegue del QComboBox */
+    //     QComboBox::drop-down {
+    //         subcontrol-origin: padding;
+    //         subcontrol-position: top right;
+    //         width: 25px;                    /* Ancho del área de la flecha */
+    //         border-left: 1px solid #999999;
+    //         background-color: #f0f0f0;
+    //     }
 
-        /* Imagen de la flecha */
-        QComboBox::down-arrow {
-            image: url(:/icons/images/icons/down-arrow-lineEdit.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Imagen de la flecha */
+    //     QComboBox::down-arrow {
+    //         image: url(:/icons/images/icons/down-arrow-lineEdit.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Imagen de la flecha al presionar con el mouse sobre ella*/
-        QComboBox::down-arrow:pressed{
-            image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
-        }
+    //     /*Imagen de la flecha al presionar con el mouse sobre ella*/
+    //     QComboBox::down-arrow:pressed{
+    //         image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
+    //     }
 
-        /*Colores del la lista*/
-        QComboBox QAbstractItemView{
-            background-color: #ffffff;       /* Fondo de la lista desplegable */
-            color: #10192D;                  /* Color del texto de los ítems */
-            selection-background-color: #273754; /* Fondo cuando se pasa el mouse o se selecciona */
-            selection-color: red;            /* Color del texto cuando se pasa el mouse o se selecciona */
-            border: none;                    /* Borde de la lista desplegable */
-            outline: none;                   /* Sin contorno */
-            padding: 0px;
-        }
+    //     /*Colores del la lista*/
+    //     QComboBox QAbstractItemView{
+    //         background-color: #ffffff;       /* Fondo de la lista desplegable */
+    //         color: #10192D;                  /* Color del texto de los ítems */
+    //         selection-background-color: #273754; /* Fondo cuando se pasa el mouse o se selecciona */
+    //         selection-color: red;            /* Color del texto cuando se pasa el mouse o se selecciona */
+    //         border: none;                    /* Borde de la lista desplegable */
+    //         outline: none;                   /* Sin contorno */
+    //         padding: 0px;
+    //     }
 
-        /*Color de un Item al pasar el mouse sobre el*/
-        QComboBox QAbstractItemView::item:hover {
-            background-color: #10192D;       /* Cambia el color de fondo al pasar el mouse */
-            color: white;                    /* Cambia el color del texto si deseas */
-        }
+    //     /*Color de un Item al pasar el mouse sobre el*/
+    //     QComboBox QAbstractItemView::item:hover {
+    //         background-color: #10192D;       /* Cambia el color de fondo al pasar el mouse */
+    //         color: white;                    /* Cambia el color del texto si deseas */
+    //     }
 
-        /* Color base del scroll*/
-        QComboBox QScrollBar:vertical {
-            background: #10192d;         /* Fondo del canal donde se desliza la barra*/
-            width: 12px;                 /* Ancho del scroll */
-            margin: 0px;
-            border: none;
-        }
+    //     /* Color base del scroll*/
+    //     QComboBox QScrollBar:vertical {
+    //         background: #10192d;         /* Fondo del canal donde se desliza la barra*/
+    //         width: 12px;                 /* Ancho del scroll */
+    //         margin: 0px;
+    //         border: none;
+    //     }
 
-        /* Estilos de la barra */
-        QComboBox QScrollBar::handle:vertical {
-            background: #273754;
-            min-height: 15px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            margin-top: 12px;           /*con esto la barra no se superpone sobre la flecha superior*/
-            margin-bottom: 12px;        /*con esto la barra no se superpone sobre la flecha inferior*/
-        }
+    //     /* Estilos de la barra */
+    //     QComboBox QScrollBar::handle:vertical {
+    //         background: #273754;
+    //         min-height: 15px;
+    //         border: none;
+    //         border-radius: 4px;
+    //         outline: none;
+    //         margin-top: 12px;           /*con esto la barra no se superpone sobre la flecha superior*/
+    //         margin-bottom: 12px;        /*con esto la barra no se superpone sobre la flecha inferior*/
+    //     }
 
-        /*Estilos al pasar el mouse sobre la barra*/
-        QComboBox QScrollBar::handle:vertical:hover{
-            background: #354970;
-        }
+    //     /*Estilos al pasar el mouse sobre la barra*/
+    //     QComboBox QScrollBar::handle:vertical:hover{
+    //         background: #354970;
+    //     }
 
-        /* Botón superior (flecha hacia arriba) */
-        QComboBox QScrollBar::sub-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     /* Botón superior (flecha hacia arriba) */
+    //     QComboBox QScrollBar::sub-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        /* Flecha hacia arriba arriba */
-        QComboBox QScrollBar::up-arrow:vertical {
-            image: url(:/icons/images/icons/up-arrowIcon.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Flecha hacia arriba arriba */
+    //     QComboBox QScrollBar::up-arrow:vertical {
+    //         image: url(:/icons/images/icons/up-arrowIcon.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Flecha hacia arriba al presionar mouse sobre ella*/
-        QComboBox QScrollBar::up-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/up-arrow-pressed.png);
-        }
+    //     /*Flecha hacia arriba al presionar mouse sobre ella*/
+    //     QComboBox QScrollBar::up-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/up-arrow-pressed.png);
+    //     }
 
-        /* Botón inferior (flecha hacia abajo) */
-        QComboBox QScrollBar::add-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     /* Botón inferior (flecha hacia abajo) */
+    //     QComboBox QScrollBar::add-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        /* Flecha abajo */
-        QComboBox QScrollBar::down-arrow:vertical {
-            image: url(:/icons/images/icons/down-arrowIcon.png);  /* Puedes reemplazar con una imagen personalizada */
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Flecha abajo */
+    //     QComboBox QScrollBar::down-arrow:vertical {
+    //         image: url(:/icons/images/icons/down-arrowIcon.png);  /* Puedes reemplazar con una imagen personalizada */
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Flecha abajo al presionar el mouse sobre ella*/
-        QComboBox QScrollBar::down-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/down-arrow-pressed.png);
-        }
+    //     /*Flecha abajo al presionar el mouse sobre ella*/
+    //     QComboBox QScrollBar::down-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/down-arrow-pressed.png);
+    //     }
 
-        /* Sin esto aparece un fondo creado por el sistema*/
-        QComboBox QScrollBar::add-page:vertical,
-        QComboBox QScrollBar::sub-page:vertical {
-            background: none;               /*!!Imporante, debe estar en "none" para que se visualicen las flechas*/
-        }
+    //     /* Sin esto aparece un fondo creado por el sistema*/
+    //     QComboBox QScrollBar::add-page:vertical,
+    //     QComboBox QScrollBar::sub-page:vertical {
+    //         background: none;               /*!!Importante, debe estar en "none" para que se visualicen las flechas*/
+    //     }
 
-    )");
+    // )");
+    comboBox->setProperty("tipo","qcombo-box-list");
+    // El scroll está dentro de la vista de la lista desplegable
+    QScrollBar* vScroll = comboBox->view()->verticalScrollBar();
+    if (vScroll) {
+        vScroll->setProperty("tipo", "qcombo-box-list-scroll");
+        vScroll->style()->unpolish(vScroll);
+        vScroll->style()->polish(vScroll);
+    }
+
+    // Forzar recálculo del estilo del QComboBox
+    comboBox->style()->unpolish(comboBox);
+    comboBox->style()->polish(comboBox);
+
     comboBox->addItems(itemList);
     comboBox->setMaxVisibleItems(5);
     comboBox->setInsertPolicy(QComboBox::NoInsert);
@@ -367,123 +410,148 @@ QComboBox* WidgetsFactory::createComboBoxSearchable(const QStringList &itemList,
 
 QComboBox* WidgetsFactory::createComboBoxNoSearchable(const QStringList &itemList, QWidget *parent){
     QComboBox *comboBox=new QComboBox(parent);
-    comboBox->setStyleSheet(R"(
-        /* Estilo principal del QComboBox (parte visible antes de desplegar) */
-        QComboBox {
-            background-color: #ffffff;
-            border: none;
-            color: #10192D;
-            font-size: 15px;
-            margin: 0px;
-        }
+    QListView *listView = new QListView(comboBox);  //necesario para que funcionen los estilos
+    comboBox->setView(listView);                    //necesario para que funcionen los estilos
+    // comboBox->setStyleSheet(R"(
+    //     /* Estilo principal del QComboBox (parte visible antes de desplegar) */
+    //     QComboBox {
+    //         background-color: #ffffff;
+    //         min-height: 23px;
+    //         border: 2px solid #274372;
+    //         border-radius: 3px;
+    //         color: #10192D;
+    //         font-size: 13px;
+    //         margin: 0px;
+    //     }
 
-        /* Flecha de despliegue del QComboBox */
-        QComboBox::drop-down {
-            subcontrol-origin: padding;
-            subcontrol-position: top right;
-            width: 25px;                    /* Ancho del área de la flecha */
-            border-left: 1px solid #999999;
-            background-color: #f0f0f0;
-        }
+    //     /* Flecha de despliegue del QComboBox */
+    //     QComboBox::drop-down {
+    //         subcontrol-origin: padding;
+    //         subcontrol-position: top right;
+    //         width: 25px;                    /* Ancho del área de la flecha */
+    //         border: 0px;
+    //         background-color: #f0f0f0;
+    //     }
 
-        /* Imagen de la flecha */
-        QComboBox::down-arrow {
-            image: url(:/icons/images/icons/down-arrow-lineEdit.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Imagen de la flecha */
+    //     QComboBox::down-arrow {
+    //         image: url(:/icons/images/icons/down-arrow-lineEdit.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Imagen de la flecha al presionar con el mouse sobre ella*/
-        QComboBox::down-arrow:pressed{
-            image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
-        }
+    //     /*Imagen de la flecha al presionar con el mouse sobre ella*/
+    //     QComboBox::down-arrow:pressed{
+    //         image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
+    //     }
 
-        /*Colores del la lista*/
-        QComboBox QAbstractItemView{
-            background-color: #ffffff;       /* Fondo de la lista desplegable */
-            color: #10192D;                  /* Color del texto de los ítems */
-            selection-background-color: #273754; /* Fondo cuando se pasa el mouse o se selecciona */
-            selection-color: red;            /* Color del texto cuando se pasa el mouse o se selecciona */
-            border: none;                    /* Borde de la lista desplegable */
-            outline: none;                   /* Sin contorno */
-            padding: 0px;
-        }
+    //     /*Colores del la lista*/
+    //     QComboBox QAbstractItemView{
+    //         background-color: #ffffff;          /* Fondo de la lista desplegable */
+    //         color: #10192D;                     /* Color del texto de los ítems */
+    //         font-size: 13px;
+    //         selection-background-color: #10192d;/* Fondo cuando se pasa el mouse o se selecciona */
+    //         selection-color: white;             /* Color del texto cuando se pasa el mouse o se selecciona */
+    //         border: 2px solid #274372;          /* Borde de la lista desplegable */
+    //         border-radius: 3px;
+    //         outline: none;                      /* Sin contorno */
+    //         padding: 0px;
+    //     }
 
-        /*Color de un Item al pasar el mouse sobre el*/
-        QComboBox QAbstractItemView::item:hover {
-            background-color: #10192D;       /* Cambia el color de fondo al pasar el mouse */
-            color: white;                    /* Cambia el color del texto si deseas */
-        }
+    //     /*Color de un Item al pasar el mouse sobre el*/
+    //     QComboBox QAbstractItemView::item:hover {
+    //         background-color: #10192D;       /* Cambia el color de fondo al pasar el mouse */
+    //         color: white;                    /* Cambia el color del texto si deseas */
+    //     }
 
-        /* Color base del scroll*/
-        QComboBox QScrollBar:vertical {
-            background: #10192d;         /* Fondo del canal donde se desliza la barra*/
-            width: 12px;                 /* Ancho del scroll */
-            margin: 0px;
-            border: none;
-        }
+    //     /* Color base del scroll*/
+    //     QComboBox QScrollBar:vertical {
+    //         background: #10192d;         /* Fondo del canal donde se desliza la barra*/
+    //         width: 12px;                 /* Ancho del scroll */
+    //         margin: 0px;
+    //         border: none;
+    //     }
 
-        /* Estilos de la barra */
-        QComboBox QScrollBar::handle:vertical {
-            background: #273754;
-            min-height: 15px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            margin-top: 12px;           /*con esto la barra no se superpone sobre la flecha superior*/
-            margin-bottom: 12px;        /*con esto la barra no se superpone sobre la flecha inferior*/
-        }
+    //     /* Estilos de la barra */
+    //     QComboBox QScrollBar::handle:vertical {
+    //         background: #273754;
+    //         min-height: 15px;
+    //         border: none;
+    //         border-radius: 4px;
+    //         outline: none;
+    //         margin-top: 12px;           /*con esto la barra no se superpone sobre la flecha superior*/
+    //         margin-bottom: 12px;        /*con esto la barra no se superpone sobre la flecha inferior*/
+    //     }
 
-        /*Estilos al pasar el mouse sobre la barra*/
-        QComboBox QScrollBar::handle:vertical:hover{
-            background: #354970;
-        }
+    //     /*Estilos al pasar el mouse sobre la barra*/
+    //     QComboBox QScrollBar::handle:vertical:hover{
+    //         background: #354970;
+    //     }
 
-        /* Botón superior (flecha hacia arriba) */
-        QComboBox QScrollBar::sub-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     /* Botón superior (flecha hacia arriba) */
+    //     QComboBox QScrollBar::sub-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        /* Flecha hacia arriba arriba */
-        QComboBox QScrollBar::up-arrow:vertical {
-            image: url(:/icons/images/icons/up-arrowIcon.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Flecha hacia arriba arriba */
+    //     QComboBox QScrollBar::up-arrow:vertical {
+    //         image: url(:/icons/images/icons/up-arrowIcon.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Flecha hacia arriba al presionar mouse sobre ella*/
-        QComboBox QScrollBar::up-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/up-arrow-pressed.png);
-        }
+    //     /*Flecha hacia arriba al presionar mouse sobre ella*/
+    //     QComboBox QScrollBar::up-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/up-arrow-pressed.png);
+    //     }
 
-        /* Botón inferior (flecha hacia abajo) */
-        QComboBox QScrollBar::add-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     /* Botón inferior (flecha hacia abajo) */
+    //     QComboBox QScrollBar::add-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        /* Flecha abajo */
-        QComboBox QScrollBar::down-arrow:vertical {
-            image: url(:/icons/images/icons/down-arrowIcon.png);  /* Puedes reemplazar con una imagen personalizada */
-            width: 12px;
-            height: 12px;
-        }
+    //     /* Flecha abajo */
+    //     QComboBox QScrollBar::down-arrow:vertical {
+    //         image: url(:/icons/images/icons/down-arrowIcon.png);  /* Puedes reemplazar con una imagen personalizada */
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        /*Flecha abajo al presionar el mouse sobre ella*/
-        QComboBox QScrollBar::down-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/down-arrow-pressed.png);
-        }
+    //     /*Flecha abajo al presionar el mouse sobre ella*/
+    //     QComboBox QScrollBar::down-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/down-arrow-pressed.png);
+    //     }
 
-        /* Sin esto aparece un fondo creado por el sistema*/
-        QComboBox QScrollBar::add-page:vertical,
-        QComboBox QScrollBar::sub-page:vertical {
-            background: none;               /*!!Imporante, debe estar en "none" para que se visualicen las flechas*/
-        }
+    //     /* Sin esto aparece un fondo creado por el sistema*/
+    //     QComboBox QScrollBar::add-page:vertical,
+    //     QComboBox QScrollBar::sub-page:vertical {
+    //         background: none;               /*!!Imporante, debe estar en "none" para que se visualicen las flechas*/
+    //     }
 
-    )");
+    // )");
+    // Propiedades para los selectores de atributo
+    comboBox->setProperty("tipo", "qcombo-box-no-edit");
+
+    // Propagar propiedad al QListView para sus estilos
+    listView->setProperty("tipo", "qcombo-box-no-edit-view");
+    listView->style()->unpolish(listView);
+    listView->style()->polish(listView);
+
+    // Propagar propiedad al scrollbar del QListView
+    QScrollBar *vScroll = comboBox->view()->verticalScrollBar();
+    if (vScroll) {
+        vScroll->setProperty("tipo", "qcombo-box-no-edit-scroll");
+        vScroll->style()->unpolish(vScroll);
+        vScroll->style()->polish(vScroll);
+    }
+
+    comboBox->style()->unpolish(comboBox);
+    comboBox->style()->polish(comboBox);
+    //Agregar items
     comboBox->addItems(itemList);
     comboBox->setMaxVisibleItems(5);
     comboBox->setInsertPolicy(QComboBox::NoInsert);
@@ -497,12 +565,32 @@ QComboBox* WidgetsFactory::createComboBoxNoSearchable(const QStringList &itemLis
 
 QCheckBox* WidgetsFactory::createCheckBox(const QString &text, QWidget *parent){
     QCheckBox *myCheckBox=new QCheckBox(text,parent);
-    myCheckBox->setStyleSheet(R"(
-        QCheckBox{
-            font-size: 13px;
-            padding-left: 20px;
-        }
-    )");
+    myCheckBox->setProperty("tipo","form-check-box");
+    // myCheckBox->setStyleSheet(R"(
+    //     QCheckBox{
+    //         font-size: 13px;
+    //         padding-left: 20px;
+    //     }
+
+    //     /* Estado: No marcado */
+    //     QCheckBox::indicator:unchecked {
+    //         image: url(:/icons/images/icons/ChBoxNoOk.png);
+    //         width: 13px;  /* Ajusta el tamaño según tu imagen */
+    //         height: 13px;
+    //     }
+
+    //     /* Estado: Marcado */
+    //     QCheckBox::indicator:checked {
+    //         image: url(:/icons/images/icons/ChBoxOk.png);
+    //         width: 13px;
+    //         height: 13px;
+    //     }
+
+    //     /*Estado: presionado*/
+    //     QCheckBox::indicator:pressed{
+    //         background-color: #354970;
+    //     }
+    // )");
     return myCheckBox;
 }
 
@@ -510,127 +598,147 @@ QScrollArea* WidgetsFactory::createQScrollArea(QWidget *widgetContainer, QWidget
     QScrollArea *myScrollArea= new QScrollArea(parent);
     myScrollArea->setWidget(widgetContainer);
     myScrollArea->setWidgetResizable(true);
-    myScrollArea->setStyleSheet(R"(
-        /************** SCROLL VERTICAL **************/
-        QScrollBar:vertical {
-            background: #10192d;
-            width: 12px;
-            margin: 0px;
-            border: none;
-        }
+    myScrollArea->setProperty("tipo","scroll-area-scroll");
+    // myScrollArea->setStyleSheet(R"(
+    //     /************** SCROLL VERTICAL **************/
+    //     QScrollBar:vertical {
+    //         background: #10192d;
+    //         width: 12px;
+    //         margin: 0px;
+    //         border: none;
+    //     }
 
-        QScrollBar::handle:vertical {
-            background: #273754;
-            min-height: 15px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            margin-top: 12px;
-            margin-bottom: 12px;
-        }
+    //     QScrollBar::handle:vertical {
+    //         background: #273754;
+    //         min-height: 15px;
+    //         border: none;
+    //         border-radius: 4px;
+    //         outline: none;
+    //         margin-top: 12px;
+    //         margin-bottom: 12px;
+    //     }
 
-        QScrollBar::handle:vertical:hover {
-            background: #354970;
-        }
+    //     QScrollBar::handle:vertical:hover {
+    //         background: #354970;
+    //     }
 
-        QScrollBar::sub-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     QScrollBar::sub-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        QScrollBar::add-line:vertical {
-            background: #273754;
-            height: 12px;
-            border: solid;
-        }
+    //     QScrollBar::add-line:vertical {
+    //         background: #273754;
+    //         height: 12px;
+    //         border: solid;
+    //     }
 
-        QScrollBar::up-arrow:vertical {
-            image: url(:/icons/images/icons/up-arrowIcon.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     QScrollBar::up-arrow:vertical {
+    //         image: url(:/icons/images/icons/up-arrowIcon.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        QScrollBar::up-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/up-arrow-pressed.png);
-        }
+    //     QScrollBar::up-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/up-arrow-pressed.png);
+    //     }
 
-        QScrollBar::down-arrow:vertical {
-            image: url(:/icons/images/icons/down-arrowIcon.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     QScrollBar::down-arrow:vertical {
+    //         image: url(:/icons/images/icons/down-arrowIcon.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        QScrollBar::down-arrow:vertical:pressed {
-            image: url(:/icons/images/icons/down-arrow-pressed.png);
-        }
+    //     QScrollBar::down-arrow:vertical:pressed {
+    //         image: url(:/icons/images/icons/down-arrow-pressed.png);
+    //     }
 
-        QScrollBar::add-page:vertical,
-        QScrollBar::sub-page:vertical {
-            background: none;
-        }
+    //     QScrollBar::add-page:vertical,
+    //     QScrollBar::sub-page:vertical {
+    //         background: none;
+    //     }
 
-        /************** SCROLL HORIZONTAL **************/
-        QScrollBar:horizontal {
-            background: #10192d;
-            height: 12px;
-            margin: 0px;
-            border: none;
-        }
+    //     /************** SCROLL HORIZONTAL **************/
+    //     QScrollBar:horizontal {
+    //         background: #10192d;
+    //         height: 12px;
+    //         margin: 0px;
+    //         border: none;
+    //     }
 
-        QScrollBar::handle:horizontal {
-            background: #273754;
-            min-width: 15px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-            margin-left: 12px;
-            margin-right: 12px;
-        }
+    //     QScrollBar::handle:horizontal {
+    //         background: #273754;
+    //         min-width: 15px;
+    //         border: none;
+    //         border-radius: 4px;
+    //         outline: none;
+    //         margin-left: 12px;
+    //         margin-right: 12px;
+    //     }
 
-        QScrollBar::handle:horizontal:hover {
-            background: #354970;
-        }
+    //     QScrollBar::handle:horizontal:hover {
+    //         background: #354970;
+    //     }
 
-        QScrollBar::sub-line:horizontal {
-            background: #273754;
-            width: 12px;
-            border: solid;
-            subcontrol-origin: margin;
-            subcontrol-position: left;    /*Esto es necesario para que se pueda ver*/
-        }
+    //     QScrollBar::sub-line:horizontal {
+    //         background: #273754;
+    //         width: 12px;
+    //         border: solid;
+    //         subcontrol-origin: margin;
+    //         subcontrol-position: left;    /*Esto es necesario para que se pueda ver*/
+    //     }
 
-        QScrollBar::add-line:horizontal {
-            background: #273754;
-            width: 12px;
-            border: solid;
-        }
+    //     QScrollBar::add-line:horizontal {
+    //         background: #273754;
+    //         width: 12px;
+    //         border: solid;
+    //     }
 
-        QScrollBar::left-arrow:horizontal {
-            image: url(:/icons/images/icons/left-drow.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     QScrollBar::left-arrow:horizontal {
+    //         image: url(:/icons/images/icons/left-drow.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        QScrollBar::left-arrow:horizontal:pressed {
-            image: url(:/icons/images/icons/left-drow-pressed.png);
-        }
+    //     QScrollBar::left-arrow:horizontal:pressed {
+    //         image: url(:/icons/images/icons/left-drow-pressed.png);
+    //     }
 
-        QScrollBar::right-arrow:horizontal {
-            image: url(:/icons/images/icons/right-drow.png);
-            width: 12px;
-            height: 12px;
-        }
+    //     QScrollBar::right-arrow:horizontal {
+    //         image: url(:/icons/images/icons/right-drow.png);
+    //         width: 12px;
+    //         height: 12px;
+    //     }
 
-        QScrollBar::right-arrow:horizontal:pressed {
-            image: url(:/icons/images/icons/right-drow-pressed.png);
-        }
+    //     QScrollBar::right-arrow:horizontal:pressed {
+    //         image: url(:/icons/images/icons/right-drow-pressed.png);
+    //     }
 
-        QScrollBar::add-page:horizontal,
-        QScrollBar::sub-page:horizontal {
-            background: none;
-        }
-    )");
+    //     QScrollBar::add-page:horizontal,
+    //     QScrollBar::sub-page:horizontal {
+    //         background: none;
+    //     }
+    // )");
+    // Propagar propiedad al scrollbar vertical
+    QScrollBar *vScroll = myScrollArea->verticalScrollBar();
+    if (vScroll) {
+        vScroll->setProperty("tipo", "scroll-area-scroll");
+        vScroll->style()->unpolish(vScroll);
+        vScroll->style()->polish(vScroll);
+    }
+
+    // Propagar propiedad al scrollbar horizontal
+    QScrollBar *hScroll = myScrollArea->horizontalScrollBar();
+    if (hScroll) {
+        hScroll->setProperty("tipo", "scroll-area-scroll");
+        hScroll->style()->unpolish(hScroll);
+        hScroll->style()->polish(hScroll);
+    }
+
+    // Forzar recálculo del estilo del QScrollArea
+    myScrollArea->style()->unpolish(myScrollArea);
+    myScrollArea->style()->polish(myScrollArea);
     return myScrollArea;
 }
 
@@ -659,30 +767,66 @@ QFrame* WidgetsFactory::createMenuSeparator(){
     separator->setFrameShape(QFrame::HLine);
     separator->setFrameShadow(QFrame::Plain);
     separator->setFixedHeight(2);
-    separator->setStyleSheet(R"(
-        background-color: #10192D;
-        margin-left: 15px;
-        margin-right: 15px;
-        border: none;
-    )");
+    separator->setProperty("tipo","menu-separator");
+    // separator->setStyleSheet(R"(
+    //     background-color: #10192D;
+    //     margin-left: 15px;
+    //     margin-right: 15px;
+    //     border: none;
+    // )");
     return separator;
 }
 
 QLabel* WidgetsFactory::createLblGui(const QString &text, QWidget *parent){
     QLabel *label=new QLabel(text,parent);
-    label->setStyleSheet(R"(
-        font-size: 15px;
-    )");
+    label->setProperty("tipo","QLabel-Gui");
     return label;
 }
 
 QLabel* WidgetsFactory::createLblForm(const QString &text, QWidget *parent){
     QLabel *label=new QLabel(text,parent);
     label->setAlignment(Qt::AlignTop);
-    label->setStyleSheet(R"(
-        font-size: 13px;
-    )");
+    label->setProperty("tipo","label-forms");
+    // label->setStyleSheet(R"(
+    //     font-size: 13px;
+    // )");
     return label;
+}
+
+QRadioButton* WidgetsFactory::createRBtn(const QString &text, QWidget *parent){
+    QRadioButton *myRadioButton=new QRadioButton(text,parent);
+    myRadioButton->setProperty("tipo","form-rb");
+    // myRadioButton->setStyleSheet(R"(
+    //     QRadioButton{
+    //         font-size: 13px;
+    //     }
+
+    //     QRadioButton::indicator::unchecked {
+    //         image: url(:/icons/images/icons/RadioButtonNoCheck.png);
+    //         width: 13px;
+    //         height: 13px;
+    //     }
+
+    //     QRadioButton::indicator:unchecked:pressed {
+    //         image: url(:/icons/images/icons/RadioButtonNoCheckPress.png);
+    //         width: 13px;
+    //         height: 13px;
+    //     }
+
+    //     QRadioButton::indicator::checked {
+    //         image: url(:/icons/images/icons/RadioButtonCheck.png);
+    //         width: 13px;
+    //         height: 13px;
+    //     }
+
+    //     QRadioButton::indicator:checked:pressed {
+    //         image: url(:/icons/images/icons/RadioButtonCheckPress.png);
+    //         width: 13px;
+    //         height: 13px;
+    //     }
+
+    // )");
+    return myRadioButton;
 }
 
 QToolButton* WidgetsFactory::createBtnAdc(QWidget *parent){
@@ -745,26 +889,6 @@ QToolButton* WidgetsFactory::createBtnUSB(QWidget *parent){
     return createBtnPeriphelal("USB",":/icons/images/icons/usb_icon.png","Puerto Serie USB",parent);
 }
 
-QRadioButton* WidgetsFactory::createRBtn(const QString &text, QWidget *parent){
-    QRadioButton *myRadioButton=new QRadioButton(text,parent);
-    myRadioButton->setStyleSheet(R"(
-        QRadioButton{
-            font-size: 13px;
-        }
 
-    //     QRadioButton::indicator{
-    //         width: 12px;
-    //         height: 12px;
-    //         border-radius: 6px;
-    //         border: 2px solid #ffffff;
-    //         background-color: #ffffff;
-    //     }
-
-    //     QRadioButton::indicator:checked{
-    //         background-color: #10192D;
-    //     }
-    )");
-    return myRadioButton;
-}
 
 

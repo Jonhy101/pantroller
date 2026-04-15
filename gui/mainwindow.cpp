@@ -15,9 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     //crear widget central y establecer colores
     QWidget *centralWidget=new QWidget(this);
     this->setCentralWidget(centralWidget);
-    centralWidget->setStyleSheet(R"(
-        background-color: #10192d;
-    )");
+    centralWidget->setProperty("tipo","main-container");
 
     //icono
     QIcon mainIcon;
@@ -29,12 +27,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     //layout principal, eliminando márgenes
     QVBoxLayout *mainLayout=new QVBoxLayout(centralWidget);
-    mainLayout->setContentsMargins(0,0,0,0);    
+    mainLayout->setContentsMargins(0,0,0,0);
 
-    /**********parte superior, logo, nombre y versión del programa*********/
+    /**********parte superior, logo, nombre, menus y versión del programa*********/
     QWidget *headerWidget=new QWidget();
-    headerWidget->setFixedHeight(64);
-    headerWidget->setStyleSheet("background-color: #1F2B42;");
+    headerWidget->setFixedHeight(64);    
+    headerWidget->setProperty("tipo","container");
     mainLayout->addWidget(headerWidget);
 
     //layout del encabezado
@@ -49,11 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //nombre
     labelNombrePrograma=new QLabel("Pantroller");
-    labelNombrePrograma->setStyleSheet(R"(
-        font-size: 24px;
-        color: #4E7FE3;
-        font-weight: bold;
-    )");
+    labelNombrePrograma->setProperty("tipo", "label_titulo");
 
     //versión
     layoutHeader->addWidget(labelNombrePrograma);

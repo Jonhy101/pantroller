@@ -5,13 +5,12 @@
 MainMenuGenerator::MainMenuGenerator(QWidget *parent)
     :QWidget(parent){
 
-    this->setStyleSheet("background-color: #151E36");
     QVBoxLayout *mainLayout=new QVBoxLayout(this);
     mainLayout->setContentsMargins(0,0,0,0);
 
     /*********Menu configurar periférico***********/
-    QWidget *containerMPerifericos=new QWidget();
-    containerMPerifericos->setStyleSheet("background-color: #1F2B42");
+    QWidget *containerMPerifericos=new QWidget();    
+    containerMPerifericos->setProperty("tipo","menu-secondary-container");
     QVBoxLayout *layoutPerifericos=new QVBoxLayout(containerMPerifericos);
     layoutPerifericos->setContentsMargins(0,10,0,10);
 
@@ -42,7 +41,7 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     /*********Menú de otras herramientas***********/
     QWidget *containerHerramientas=new QWidget();
-    containerHerramientas->setStyleSheet("background-color: #1F2B42");
+    containerHerramientas->setProperty("tipo","menu-secondary-container");
     QVBoxLayout *layoutHerramientas=new QVBoxLayout(containerHerramientas);
     layoutHerramientas->setContentsMargins(0,10,0,10);
 
@@ -80,7 +79,7 @@ MainMenuGenerator::MainMenuGenerator(QWidget *parent)
 
     /**************Soporte*************************/
     QWidget *containerSoporte=new QWidget();
-    containerSoporte->setStyleSheet("background-color: #1F2B42");
+    containerSoporte->setProperty("tipo","menu-secondary-container");
     QVBoxLayout *layoutSoporte=new QVBoxLayout(containerSoporte);
     layoutSoporte->setContentsMargins(0,10,0,10);
 

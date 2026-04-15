@@ -34,8 +34,17 @@
         <file>images/icons/right-drow.png</file>
         <file>images/icons/right-drow-pressed.png</file>
         <file>images/icons/helpIcon.png</file>
+        <file>images/icons/ChBoxNoOk.png</file>
+        <file>images/icons/ChBoxOk.png</file>
+        <file>images/icons/RadioButtonCheck.png</file>
+        <file>images/icons/RadioButtonNoCheck.png</file>
+        <file>images/icons/RadioButtonCheckPress.png</file>
+        <file>images/icons/RadioButtonNoCheckPress.png</file>
     </qresource>
     <qresource prefix="/imgDevices">
         <file>images/img_devices/pic18f4550.jpg</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file>styles/styles.qss</file>
     </qresource>
 </RCC>

@@ -1,0 +1,684 @@
+
+/****Contenedor Principal****/
+QWidget[tipo="main-container"]{
+    background-color: @BLUE_1;
+}
+
+/******Contenedor de la parte superior******/
+QWidget[tipo="container"]{
+    background-color: @BLUE_5;
+}
+
+/********Contenedor de elementos dentro de la ventana***/
+QWidget[tipo="secondary-container"]{    
+    background-color: @BLUE_6;
+}
+
+/******Contenedor de elementos de menu principal******/
+QWidget[tipo="menu-secondary-container"]{
+    background-color: @BLUE_2;
+}
+
+/*******Label de título*******/
+QLabel[tipo="label_titulo"]{
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+/********Label de menu principal******/
+QLabel[tipo="label-menu"]{
+    font-size: 17px;
+    padding-left: 5px;
+}
+
+/******Botones del menú principal****/
+QPushButton[tipo="main-menu-button"]{
+    background-color: @BLUE_2;
+    border: none;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+QPushButton[tipo="main-menu-button"]:hover{
+    background-color: @BLUE_3;
+}
+
+QPushButton[tipo="main-menu-button"]:pressed{
+    background-color: @BLUE_4;
+}
+
+QPushButton[tipo="main-menu-button"]:checked{
+    background-color: @BLUE_5;
+    border-style: solid;
+    border-width: 0px 0px 0px 4px;
+    border-left-color: @BLUE_BUTTON_1;
+}
+
+/*******Botones con íconos pequeños********/
+QPushButton[tipo="button-icon"]{
+    background-color: transparent;
+    border-style: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QPushButton[tipo="button-icon"]:hover{
+    background-color: @BLUE_3;
+}
+
+QPushButton[tipo="button-icon"]:pressed{
+    background-color: @BLUE_4;
+}
+
+/*******botones de periféricos*****/
+QToolButton[tipo="perip-button"]{
+    background-color: @BLUE_1;
+    border: 2px solid @BLUE_BUTTON_6;
+    border-radius:5px;
+}
+
+QToolButton[tipo="perip-button"]:hover{
+    background-color: @BLUE_BUTTON_6;
+}
+
+QToolButton[tipo="perip-button"]:pressed{
+    background-color: @BLUE_4;
+}
+
+/*****botones de control*****/
+QPushButton[tipo="control-button"]{
+    background-color: @BLUE_BUTTON_1;
+    border-style: none;
+    border-radius: 5px;
+    font-size: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+QPushButton[tipo="control-button"]:disabled{
+    background-color: @BLUE_BUTTON_2;
+    color: @BLUE_BUTTON_7;
+}
+
+QPushButton[tipo="control-button"]:hover{
+    background-color: @BLUE_BUTTON_3;
+}
+
+QPushButton[tipo="control-button"]:pressed{
+    background-color: @BLUE_BUTTON_4;
+}
+
+/*******QLineEdit de formularios*****/
+QLineEdit[tipo="form-LineEdit"]{
+    font-size: 13px;
+    font-weight: bold;
+    background-color: @BLUE_7;    
+    max-height: 20px;
+    color: @BLUE_1;
+}
+
+/*******QCheckBox de formularios*****/
+QCheckBox[tipo="form-check-box"]{
+    font-size: 13px;
+    padding-left: 20px;
+}
+
+/*Estado: No marcado*/
+QCheckBox[tipo="form-check-box"]::indicator:unchecked{
+    image: url(:/icons/images/icons/ChBoxNoOk.png);
+    width: 13px;  /* Ajusta el tamaño según tu imagen */
+    height: 13px;
+}
+
+/*Estado: Marcado*/
+QCheckBox[tipo="form-check-box"]::indicator:checked{
+    image: url(:/icons/images/icons/ChBoxOk.png);
+    width: 13px;  /* Ajusta el tamaño según tu imagen */
+    height: 13px;
+}
+
+/*Estado: Presionado*/
+QCheckBox[tipo="form-check-box"]::indicator:pressed{
+    background-color: @BLUE_3;
+}
+
+
+/*************QComboBox de lista de dispositivos******/
+/*Cuerpo principal del QComboBox (parte visible antes de desplegar)*/
+QComboBox[tipo="qcombo-box-list"] {
+    background-color: @BLUE_7;
+    border: none;
+    color: @BLUE_1;
+    font-size: 15px;
+    margin: 0px;
+}
+
+/*Área del botón de despliegue (zona de la flecha, lado derecho)*/
+QComboBox[tipo="qcombo-box-list"]::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px;
+    border-left: 1px solid @BLUE_BUTTON_2;
+    background-color: @BLUE_7;
+}
+
+/*Flecha de despliegue (imagen normal)*/
+QComboBox[tipo="qcombo-box-list"]::down-arrow {
+    image: url(:/icons/images/icons/down-arrow-lineEdit.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha de despliegue (imagen al presionar el mouse)*/
+QComboBox[tipo="qcombo-box-list"]::down-arrow:pressed {
+    image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
+}
+
+/*Lista desplegable: fondo y colores generales de los ítems*/
+QComboBox[tipo="qcombo-box-list"] QAbstractItemView {
+    background-color: @BLUE_7;
+    color: @BLUE_1;
+    selection-background-color: @BLUE_4;
+    selection-color: @BLUE_BUTTON_1;
+    border: none;
+    outline: none;
+    padding: 0px;
+}
+
+/*Lista desplegable: color de un ítem al pasar el mouse*/
+QComboBox[tipo="qcombo-box-list"] QAbstractItemView::item:hover {
+    background-color: @BLUE_1;
+    color: @QLINE_BACKGROUND;
+}
+
+/*Canal vertical del scroll (fondo donde se desliza el handle)*/
+QScrollBar:vertical[tipo="qcombo-box-list-scroll"] {
+    background: @BLUE_1;
+    width: 12px;
+    margin: 0px;
+    border: none;
+}
+
+/*Handle: barra deslizante del scroll*/
+QScrollBar::handle:vertical[tipo="qcombo-box-list-scroll"] {
+    background: @BLUE_4;
+    min-height: 15px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+/*Handle: color al pasar el mouse sobre él*/
+QScrollBar::handle:vertical:hover[tipo="qcombo-box-list-scroll"] {
+    background: @BLUE_3;
+}
+
+/*Botón superior (zona clickeable de la flecha hacia arriba)*/
+QScrollBar::sub-line:vertical[tipo="qcombo-box-list-scroll"] {
+    background: @BLUE_3;
+    height: 12px;
+    border: solid;
+}
+
+/*Flecha hacia arriba (imagen normal)*/
+QScrollBar::up-arrow:vertical[tipo="qcombo-box-list-scroll"] {
+    image: url(:/icons/images/icons/up-arrowIcon.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia arriba (imagen al presionar el mouse)*/
+QScrollBar::up-arrow:vertical:pressed[tipo="qcombo-box-list-scroll"] {
+    image: url(:/icons/images/icons/up-arrow-pressed.png);
+}
+
+/*Botón inferior (zona clickeable de la flecha hacia abajo)*/
+QScrollBar::add-line:vertical[tipo="qcombo-box-list-scroll"] {
+    background: @BLUE_4;
+    height: 12px;
+    border: solid;
+}
+
+/*Flecha hacia abajo (imagen normal)*/
+QScrollBar::down-arrow:vertical[tipo="qcombo-box-list-scroll"] {
+    image: url(:/icons/images/icons/down-arrowIcon.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia abajo (imagen al presionar el mouse)*/
+QScrollBar::down-arrow:vertical:pressed[tipo="qcombo-box-list-scroll"] {
+    image: url(:/icons/images/icons/down-arrow-pressed.png);
+}
+
+/*Zonas vacías arriba y abajo del handle (deben ser "none")*/
+QScrollBar::add-page:vertical[tipo="qcombo-box-list-scroll"],
+QScrollBar::sub-page:vertical[tipo="qcombo-box-list-scroll"] {
+    background: none;
+}
+
+/************************QScrollArea****************/
+
+/*Color de borde de todo el conjunto*/
+QAbstractScrollArea[tipo="scroll-area-scroll"]{
+    border: none;    
+}
+
+/**Esquina inferior izquierda: punto de toque entre scrolls*/
+QAbstractScrollArea::corner[tipo="scroll-area-scroll"] {
+    background-color: @BLUE_1; /* o el azul que estés usando */
+}
+
+/************** SCROLL VERTICAL **************/
+/*Canal vertical del scroll (fondo donde se desliza el handle)*/
+QScrollBar:vertical[tipo="scroll-area-scroll"] {
+    background: @BLUE_1;                /* Fondo del canal donde se desliza la barra */
+    width: 12px;                        /* Ancho del scroll */
+    margin: 0px;
+    border: none;
+}
+
+/*Handle: barra deslizante del scroll vertical*/
+QScrollBar::handle:vertical[tipo="scroll-area-scroll"] {
+    background: @BLUE_4;
+    min-height: 15px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    margin-top: 12px;                   /* Con esto la barra no se superpone sobre la flecha superior */
+    margin-bottom: 12px;                /* Con esto la barra no se superpone sobre la flecha inferior */
+}
+
+/*Handle vertical: color al pasar el mouse sobre él*/
+QScrollBar::handle:vertical:hover[tipo="scroll-area-scroll"] {
+    background: @BLUE_3;
+}
+
+/*Botón superior (zona clickeable de la flecha hacia arriba)*/
+QScrollBar::sub-line:vertical[tipo="scroll-area-scroll"] {
+    background: @BLUE_4;
+    height: 12px;
+    border: solid;
+}
+
+/*Botón inferior (zona clickeable de la flecha hacia abajo)*/
+QScrollBar::add-line:vertical[tipo="scroll-area-scroll"] {
+    background: @BLUE_4;
+    height: 12px;
+    border: solid;
+}
+
+/*Flecha hacia arriba (imagen normal)*/
+QScrollBar::up-arrow:vertical[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/up-arrowIcon.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia arriba (imagen al presionar el mouse)*/
+QScrollBar::up-arrow:vertical:pressed[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/up-arrow-pressed.png);
+}
+
+/*Flecha hacia abajo (imagen normal)*/
+QScrollBar::down-arrow:vertical[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/down-arrowIcon.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia abajo (imagen al presionar el mouse)*/
+QScrollBar::down-arrow:vertical:pressed[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/down-arrow-pressed.png);
+}
+
+/*Zonas vacías arriba y abajo del handle vertical (deben ser "none")*/
+QScrollBar::add-page:vertical[tipo="scroll-area-scroll"],
+QScrollBar::sub-page:vertical[tipo="scroll-area-scroll"] {
+    background: none;                   /* !!Importante, debe estar en "none" para que se visualicen las flechas */
+}
+
+/************** SCROLL HORIZONTAL **************/
+
+/*Canal horizontal del scroll (fondo donde se desliza el handle)*/
+QScrollBar:horizontal[tipo="scroll-area-scroll"] {
+    background: @BLUE_1;                /* Fondo del canal donde se desliza la barra */
+    height: 12px;                       /* Alto del scroll */
+    margin: 0px;
+    border: none;
+}
+
+/*Handle: barra deslizante del scroll horizontal*/
+QScrollBar::handle:horizontal[tipo="scroll-area-scroll"] {
+    background: @BLUE_4;
+    min-width: 15px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    margin-left: 12px;                  /* Con esto la barra no se superpone sobre la flecha izquierda */
+    margin-right: 12px;                 /* Con esto la barra no se superpone sobre la flecha derecha */
+}
+
+/*Handle horizontal: color al pasar el mouse sobre él*/
+QScrollBar::handle:horizontal:hover[tipo="scroll-area-scroll"] {
+    background: @BLUE_3;
+}
+
+/*Botón izquierdo (zona clickeable de la flecha hacia la izquierda)*/
+QScrollBar::sub-line:horizontal[tipo="scroll-area-scroll"] {
+    background: @BLUE_4;
+    width: 12px;
+    border: solid;
+    subcontrol-origin: margin;
+    subcontrol-position: left;          /* Esto es necesario para que se pueda ver */
+}
+
+/*Botón derecho (zona clickeable de la flecha hacia la derecha)*/
+QScrollBar::add-line:horizontal[tipo="scroll-area-scroll"] {
+    background: @BLUE_4;
+    width: 12px;
+    border: solid;
+}
+
+/*Flecha hacia la izquierda (imagen normal)*/
+QScrollBar::left-arrow:horizontal[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/left-drow.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia la izquierda (imagen al presionar el mouse)*/
+QScrollBar::left-arrow:horizontal:pressed[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/left-drow-pressed.png);
+}
+
+/*Flecha hacia la derecha (imagen normal)*/
+QScrollBar::right-arrow:horizontal[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/right-drow.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia la derecha (imagen al presionar el mouse)*/
+QScrollBar::right-arrow:horizontal:pressed[tipo="scroll-area-scroll"] {
+    image: url(:/icons/images/icons/right-drow-pressed.png);
+}
+
+/*Zonas vacías a la izquierda y derecha del handle horizontal (deben ser "none")*/
+QScrollBar::add-page:horizontal[tipo="scroll-area-scroll"],
+QScrollBar::sub-page:horizontal[tipo="scroll-area-scroll"] {
+    background: none;                   /* !!Importante, debe estar en "none" para que se visualicen las flechas */
+}
+/***********************************************************/
+
+
+/*****QWidget container de menus de perifericos****/
+QWidget[tipo="menu-Peripheal-Container"]{
+    background-color: @BLUE_1;    
+}
+
+
+/************QComboBox de lista de opciones no editable*******/
+/*Cuerpo principal del QComboBox no editable (parte visible antes de desplegar)*/
+QComboBox[tipo="qcombo-box-no-edit"] {
+    background-color: @BLUE_7;
+    min-height: 23px;
+    border: 2px solid @BLUE_5;
+    border-radius: 3px;
+    color: @BLUE_1;
+    font-size: 13px;
+    margin: 0px;
+}
+
+/*Área del botón de despliegue (zona de la flecha, lado derecho)*/
+QComboBox[tipo="qcombo-box-no-edit"]::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px;                    /* Ancho del área de la flecha */
+    border: 0px;
+    background-color: @BLUE_7;
+}
+
+/*Estilos de la caja del QComboBox al hace clic en el*/
+QComboBox[tipo="qcombo-box-no-edit"]:!editable:on{
+    border: 2px solid @BLUE_BUTTON_1;
+}
+
+/*Flecha de despliegue (imagen normal)*/
+QComboBox[tipo="qcombo-box-no-edit"]::down-arrow {
+    image: url(:/icons/images/icons/down-arrow-lineEdit.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha de despliegue (imagen al presionar el mouse)*/
+QComboBox[tipo="qcombo-box-no-edit"]::down-arrow:pressed {
+    image: url(:/icons/images/icons/down-arrow-lineEdit-Pressed.png);
+}
+
+/*Colores de la lista desplegable: fondo y colores generales de los ítems*/
+QListView[tipo="qcombo-box-no-edit-view"] {
+    background-color: @BLUE_7;          /* Fondo de la lista desplegable */
+    color: @BLUE_1;                     /* Color del texto de los ítems */
+    font-size: 13px;
+    selection-background-color: @BLUE_1;/* Fondo cuando se pasa el mouse o se selecciona */
+    selection-color: white;             /* Color del texto cuando se pasa el mouse o se selecciona */
+    border: 2px solid @BLUE_BUTTON_1;          /* Borde de la lista desplegable */
+    border-radius: 2px;
+    outline: none;                      /* Sin contorno */
+    padding: 0px;
+}
+
+/*Color de un ítem al pasar el mouse sobre él*/
+QListView[tipo="qcombo-box-no-edit-view"]::item:hover {
+    background-color: @BLUE_1;          /* Cambia el color de fondo al pasar el mouse */
+    color: white;                       /* Cambia el color del texto si deseas */
+}
+
+/*Canal vertical del scroll: color base (fondo donde se desliza el handle)*/
+QScrollBar:vertical[tipo="qcombo-box-no-edit-scroll"] {
+    background: @BLUE_1;                /* Fondo del canal donde se desliza la barra */
+    width: 12px;                        /* Ancho del scroll */
+    margin: 0px;
+    border: none;
+}
+
+/*Handle: barra deslizante del scroll*/
+QScrollBar::handle:vertical[tipo="qcombo-box-no-edit-scroll"] {
+    background: @BLUE_4;
+    min-height: 15px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    margin-top: 12px;                   /* Con esto la barra no se superpone sobre la flecha superior */
+    margin-bottom: 12px;                /* Con esto la barra no se superpone sobre la flecha inferior */
+}
+
+/*Handle: color al pasar el mouse sobre él*/
+QScrollBar::handle:vertical:hover[tipo="qcombo-box-no-edit-scroll"] {
+    background: @BLUE_3;
+}
+
+/*Botón superior (zona clickeable de la flecha hacia arriba)*/
+QScrollBar::sub-line:vertical[tipo="qcombo-box-no-edit-scroll"] {
+    background: @BLUE_4;
+    height: 12px;
+    border: solid;
+}
+
+/*Flecha hacia arriba (imagen normal)*/
+QScrollBar::up-arrow:vertical[tipo="qcombo-box-no-edit-scroll"] {
+    image: url(:/icons/images/icons/up-arrowIcon.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia arriba (imagen al presionar el mouse)*/
+QScrollBar::up-arrow:vertical:pressed[tipo="qcombo-box-no-edit-scroll"] {
+    image: url(:/icons/images/icons/up-arrow-pressed.png);
+}
+
+/*Botón inferior (zona clickeable de la flecha hacia abajo)*/
+QScrollBar::add-line:vertical[tipo="qcombo-box-no-edit-scroll"] {
+    background: @BLUE_4;
+    height: 12px;
+    border: solid;
+}
+
+/*Flecha hacia abajo (imagen normal)*/
+QScrollBar::down-arrow:vertical[tipo="qcombo-box-no-edit-scroll"] {
+    image: url(:/icons/images/icons/down-arrowIcon.png);    /* Puedes reemplazar con una imagen personalizada */
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia abajo (imagen al presionar el mouse)*/
+QScrollBar::down-arrow:vertical:pressed[tipo="qcombo-box-no-edit-scroll"] {
+    image: url(:/icons/images/icons/down-arrow-pressed.png);
+}
+
+/*Zonas vacías arriba y abajo del handle (deben ser "none")*/
+QScrollBar::add-page:vertical[tipo="qcombo-box-no-edit-scroll"],
+QScrollBar::sub-page:vertical[tipo="qcombo-box-no-edit-scroll"] {
+    background: none;                   /* !!Importante, debe estar en "none" para que se visualicen las flechas */
+}
+
+
+/********QTabWidgets*******/
+QTabWidget[tipo="QTabWidget-conf"]{
+    background-color: transparent;
+}
+
+QTabWidget[tipo="QTabWidget-conf"] QTabBar::tab:selected{
+    background-color: @BLUE_BUTTON_1;
+}
+
+
+/******QLabelGui******/
+QLabel[tipo="QLabel-Gui"]{
+    font-size: 15px;
+    color: @QLINE_BACKGROUND;
+}
+
+/*******QTextEdit y scroll******/
+QTextEdit[tipo="text-Edit"] {
+    background-color: @BLUE_1;
+    padding-left: 5px;
+    border: none;
+}
+
+/*Canal vertical del scroll (fondo donde se desliza el handle) */
+QScrollBar:vertical[tipo="text-Edit-scroll"] {
+    background: @BLUE_1;
+    width: 12px;
+    margin: 0px;
+    border: none;
+}
+
+/*Handle: barra deslizante del scroll*/
+QScrollBar::handle:vertical[tipo="text-Edit-scroll"] {
+    background: @BLUE_4;
+    min-height: 15px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+/*Handle: color al pasar el mouse sobre el*/
+QScrollBar::handle:vertical:hover[tipo="text-Edit-scroll"] {
+    background: @BLUE_3;
+}
+
+/*Botón superior (zona clickeable de la flecha hacia arriba)*/
+QScrollBar::sub-line:vertical[tipo="text-Edit-scroll"] {
+    background: @BLUE_4;
+    height: 12px;
+    border: solid;
+}
+
+/*Flecha hacia arriba (imagen normal)*/
+QScrollBar::up-arrow:vertical[tipo="text-Edit-scroll"] {
+    image: url(:/icons/images/icons/up-arrowIcon.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia arriba (imagen al presionar el mouse)*/
+QScrollBar::up-arrow:vertical:pressed[tipo="text-Edit-scroll"] {
+    image: url(:/icons/images/icons/up-arrow-pressed.png);
+}
+
+/*Botón inferior (zona clickeable de la flecha hacia abajo)*/
+QScrollBar::add-line:vertical[tipo="text-Edit-scroll"] {
+    background: @BLUE_4;
+    height: 12px;
+    border: solid;
+}
+
+/*Flecha hacia abajo (imagen normal)*/
+QScrollBar::down-arrow:vertical[tipo="text-Edit-scroll"] {
+    image: url(:/icons/images/icons/down-arrowIcon.png);
+    width: 12px;
+    height: 12px;
+}
+
+/*Flecha hacia abajo (imagen al presionar el mouse)*/
+QScrollBar::down-arrow:vertical:pressed[tipo="text-Edit-scroll"] {
+    image: url(:/icons/images/icons/down-arrow-pressed.png);
+}
+
+/*Zonas vacías arriba y abajo del handle (deben ser "none") */
+QScrollBar::add-page:vertical[tipo="text-Edit-scroll"],
+QScrollBar::sub-page:vertical[tipo="text-Edit-scroll"] {
+    background: none;
+}
+
+
+/***********Menu separators********/
+QFrame[tipo="menu-separator"]{
+    background-color: @BLUE_1;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: none;
+}
+
+/*****QLabel de formularios****/
+QLabel[tipo="label-forms"]{
+    font-size: 13px;    
+}
+
+/*******QRadioButtons de formularios*********/
+QRadioButton[tipo="form-rb"]{
+    font-size: 13px;
+}
+
+QRadioButton[tipo="form-rb"]::indicator::unchecked {
+    image: url(:/icons/images/icons/RadioButtonNoCheck.png);
+    width: 13px;
+    height: 13px;
+}
+
+QRadioButton[tipo="form-rb"]::indicator:unchecked:pressed {
+    image: url(:/icons/images/icons/RadioButtonNoCheckPress.png);
+    width: 13px;
+    height: 13px;
+}
+
+QRadioButton[tipo="form-rb"]::indicator::checked {
+    image: url(:/icons/images/icons/RadioButtonCheck.png);
+    width: 13px;
+    height: 13px;
+}
+
+QRadioButton[tipo="form-rb"]::indicator:checked:pressed {
+    image: url(:/icons/images/icons/RadioButtonCheckPress.png);
+    width: 13px;
+    height: 13px;
+}

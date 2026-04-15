@@ -20,6 +20,7 @@ SOURCES += \
 HEADERS += \
     gui/devices/pic18f4550.h \
     gui/devicewidget.h \
+    gui/guiColors.h \
     gui/widgetsfactory.h \
     gui/mainmenugenerator.h\
     gui/mainwindow.h \
@@ -38,3 +39,6 @@ RESOURCES += \
 
 INCLUDEPATH += $$PWD/gui
 INCLUDEPATH += $$PWD/logic
+
+DISTFILES += \
+    resources/styles/styles.qss

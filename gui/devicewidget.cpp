@@ -12,18 +12,24 @@
 DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent) {
 
     //establecer color de fondo y layout pricipal
-    this->setStyleSheet("background-color: #151E36");
+    // this->setStyleSheet("background-color: #151E36;");
+    // this->setProperty("tipo","secondary-container");
+    // this->setAttribute(Qt::WA_StyledBackground,true);
     QHBoxLayout *mainLayout=new QHBoxLayout(this);
     mainLayout->setContentsMargins(0,0,0,0);
 
     //Panel de selección de dispositivo
     QWidget *panelSelDisp=new QWidget();
-    QVBoxLayout *layoutSelDisp=new QVBoxLayout(panelSelDisp);    
+    panelSelDisp->setProperty("tipo","secondary-container");
+    QVBoxLayout *layoutSelDisp=new QVBoxLayout(panelSelDisp);
+
+    // layoutSelDisp->
 
     //Selección de dispositivo
     QHBoxLayout *layoutSeleccion=new QHBoxLayout();
     labelSeleccion=new QLabel("Selección de dispositivo:");
-    labelSeleccion->setStyleSheet("font-size: 15px;");
+    // labelSeleccion->setStyleSheet("font-size: 15px;");
+    labelSeleccion->setProperty("tipo","QLabel-Gui");
     layoutSeleccion->addWidget(labelSeleccion,1);
     layoutSelDisp->addLayout(layoutSeleccion);
 
@@ -37,7 +43,7 @@ DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent) {
     //botón para confirmar elección
     QHBoxLayout *layoutControls=new QHBoxLayout();      //layout para limitar el ancho del botón
     layoutControls->addStretch();
-    btnConfirmDevice=WidgetsFactory::createControlButton("Confirmar Selección");    
+    btnConfirmDevice=WidgetsFactory::createControlButton("Confirmar Selección");
     layoutControls->addWidget(btnConfirmDevice);
     layoutControls->addStretch();
     layoutSelDisp->addSpacing(10);
@@ -45,12 +51,14 @@ DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent) {
 
     //Panel de configuración de periferico y salida
     QWidget *panelConf=new QWidget();
-    panelConf->setStyleSheet("background-color: #151E36");
+    //panelConf->setStyleSheet("background-color: #151E36");
+    panelConf->setProperty("tipo","secondary-container");
     mainLayout->addWidget(panelConf,2);
 
     //Panel de características y selección de periférico
     QWidget *panelOptions=new QWidget();
-    panelOptions->setStyleSheet("background-color: #151E36");
+    //panelOptions->setStyleSheet("background-color: #151E36");
+    panelOptions->setProperty("tipo","secondary-container");
     layoutSelDisp->addWidget(panelOptions);
 
     layoutSelDisp->addStretch();            //subir todo hacia arriba
