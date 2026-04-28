@@ -76,7 +76,7 @@ QPushButton[tipo="button-icon"]:pressed{
 /*******botones de periféricos*****/
 QToolButton[tipo="perip-button"]{
     background-color: @BLUE_1;
-    border: 2px solid @BLUE_BUTTON_6;
+    border: 2px solid @BLUE_BUTTON_5;
     border-radius:5px;
 }
 
@@ -123,7 +123,7 @@ QLineEdit[tipo="form-LineEdit"]{
 /*******QCheckBox de formularios*****/
 QCheckBox[tipo="form-check-box"]{
     font-size: 13px;
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 
 /*Estado: No marcado*/
@@ -263,15 +263,22 @@ QScrollBar::sub-page:vertical[tipo="qcombo-box-list-scroll"] {
 }
 
 /************************QScrollArea****************/
-
 /*Color de borde de todo el conjunto*/
 QAbstractScrollArea[tipo="scroll-area-scroll"]{
-    border: none;    
+    background-color: @BLUE_1;
+    border-radius: 5px;
+    border: 1px solid @BLUE_BUTTON_6;
 }
 
 /**Esquina inferior izquierda: punto de toque entre scrolls*/
 QAbstractScrollArea::corner[tipo="scroll-area-scroll"] {
     background-color: @BLUE_1; /* o el azul que estés usando */
+    border-radius: 5px;        /*Redondea borde inferior izquierdo del corner*/
+}
+
+/*Transparentar el viewport para que no se superpongan sus bordes */
+QAbstractScrollArea[tipo="scroll-area-scroll"] > QWidget > QWidget {
+    background: transparent;
 }
 
 /************** SCROLL VERTICAL **************/
@@ -419,7 +426,7 @@ QScrollBar::sub-page:horizontal[tipo="scroll-area-scroll"] {
 
 /*****QWidget container de menus de perifericos****/
 QWidget[tipo="menu-Peripheal-Container"]{
-    background-color: @BLUE_1;    
+    background-color: @BLUE_1;
 }
 
 
@@ -569,7 +576,8 @@ QLabel[tipo="QLabel-Gui"]{
 QTextEdit[tipo="text-Edit"] {
     background-color: @BLUE_1;
     padding-left: 5px;
-    border: none;
+    border: 1px solid @BLUE_BUTTON_6;
+    border-radius: 5px;
 }
 
 /*Canal vertical del scroll (fondo donde se desliza el handle) */
@@ -681,4 +689,11 @@ QRadioButton[tipo="form-rb"]::indicator:checked:pressed {
     image: url(:/icons/images/icons/RadioButtonCheckPress.png);
     width: 13px;
     height: 13px;
+}
+
+/***************QFrames*************/
+QFrame[tipo="form-frame"]{
+    background-color: @BLUE_1;
+    border-radius: 5px;
+    border: 1px solid @BLUE_BUTTON_6;
 }

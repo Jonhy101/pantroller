@@ -18,7 +18,7 @@ private:
     //Componentes gráficos
     QLabel *labelPinout, *labelTest2;
     QLabel *labelImgDisp, *labelCaract, *labelPerip;
-    QTextEdit *txtEditFeatures;
+    QTextEdit *txtEditFeatures, *txtEditOutCode;
     QPushButton *btnHideImg, *btnHideFeatures;
     QToolButton *tBtnOscillator, *tBtnEEprom, *tBtnInterrupts,
                 *tBtnTimers, *tBtnCpp, *tBtnEccp, *tBtnUsb,
@@ -45,6 +45,9 @@ private:
 
 private slots:
     void clickedBtnOscillator();
+
+    //se hace clic en el botón de obtener código c
+    void clickedBtnToC();
 };
 
 #endif // PIC18F455__H

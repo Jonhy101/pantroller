@@ -10,6 +10,7 @@
 #include <QScrollArea>
 #include <QLineEdit>
 #include <QRadioButton>
+#include <QIntValidator>
 
 GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget *parent)
     :QWidget(parent){
@@ -228,32 +229,39 @@ void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del m
         QLabel *lblTitulo=WidgetsFactory::createLblGui("Configuración del Cristal de Cuarzo");
         layoutOscContainer->addWidget(lblTitulo,0,Qt::AlignCenter);
 
-        //Input Frecuencia del cristal
-        QHBoxLayout *layoutInputFreq=new QHBoxLayout();
-        layoutOscContainer->addLayout(layoutInputFreq);
+        //Layout de zona de ingreso de datos
+        QFrame *frameFormOscillator=new QFrame();
+        QGridLayout *formLayoutOsc=new QGridLayout(frameFormOscillator);
+        frameFormOscillator->setProperty("tipo","form-frame");
+        layoutOscContainer->addWidget(frameFormOscillator);
+
+        //Input Frecuencia del cristal                
         QLabel *lblFreq=WidgetsFactory::createLblForm("Frecuencia del Cristal (max. 48MHz):");
-        layoutInputFreq->addWidget(lblFreq);
+        formLayoutOsc->addWidget(lblFreq,0,0,1,1,Qt::AlignCenter|Qt::AlignLeft);
+        //QlineEdit de ingreso del valor con validador de enteros y rango
         QLineEdit *lineEditFreq=WidgetsFactory::createLineEditForm();
         lineEditFreq->setMaximumWidth(60);
-        layoutInputFreq->addWidget(lineEditFreq);
+        QValidator *freqValidator=new QIntValidator(1,25);
+        lineEditFreq->setValidator(freqValidator);
+        //QLabel de texto MHz
         QLabel *lblMhz=WidgetsFactory::createLblForm("MHz");
+        //Layout de ingreso de valor y label MHz
+        QHBoxLayout *layoutInputFreq=new QHBoxLayout();
+        layoutInputFreq->addWidget(lineEditFreq);
         layoutInputFreq->addWidget(lblMhz);
-        layoutInputFreq->addStretch();
+        //Agregar al layout del formuulario
+        formLayoutOsc->addLayout(layoutInputFreq,0,1,1,1,Qt::AlignCenter|Qt::AlignLeft);
 
         //Habilitar/deshabilitar PLL
-        QHBoxLayout *layoutPll=new QHBoxLayout();
-        layoutPll->setContentsMargins(0,0,0,0);
-        layoutOscContainer->addLayout(layoutPll);
         QLabel *lblPll=WidgetsFactory::createLblForm("Habilitar PLL(PLLDIV):");
-        layoutPll->addWidget(lblPll);
+        formLayoutOsc->addWidget(lblPll,1,0,1,1,Qt::AlignCenter|Qt::AlignLeft);
         //QCheckBox para habilitar o deshabilitar pll
         QCheckBox *checkEnablePLL=WidgetsFactory::createCheckBox("Habilitar");
-        layoutPll->addWidget(checkEnablePLL);
-        layoutPll->addStretch();                //lo que está antes se va a la izquierda, lo que está después a la derecha
+        formLayoutOsc->addWidget(checkEnablePLL,1,1,Qt::AlignCenter|Qt::AlignLeft);
         //botón de ayuda
         QPushButton *btnHelpPLL=WidgetsFactory::createIconButton();
         btnHelpPLL->setIcon(iconHelp);
-        layoutPll->addWidget(btnHelpPLL);
+        formLayoutOsc->addWidget(btnHelpPLL,1,2,Qt::AlignTop|Qt::AlignRight);
 
         //Postcaler del oscilador->CPUDIV
         const QStringList postScalerOptionsNoPLL={
@@ -270,51 +278,46 @@ void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del m
         };
 
         //Selección de CPUDIV->Postscaler
-        QHBoxLayout *layoutCpudiv=new QHBoxLayout();
-        layoutCpudiv->setContentsMargins(0,0,0,0);
-        layoutOscContainer->addLayout(layoutCpudiv);
         QLabel *lblCpudiv=WidgetsFactory::createLblForm("Postscaler del Oscilador (CPUDIV):");
-        layoutCpudiv->addWidget(lblCpudiv);
+        formLayoutOsc->addWidget(lblCpudiv,2,0,Qt::AlignCenter|Qt::AlignLeft);
         QComboBox *QComboPostcaler=WidgetsFactory::createComboBoxNoSearchable(postScalerOptionsNoPLL);
-        layoutCpudiv->addWidget(QComboPostcaler);
-        layoutCpudiv->addStretch();
+        formLayoutOsc->addWidget(QComboPostcaler,2,1,Qt::AlignCenter|Qt::AlignLeft);
 
         //Fuente de reloj del módulo USB
-        QHBoxLayout *layoutUsbdiv=new QHBoxLayout();
-        layoutUsbdiv->setContentsMargins(0,5,0,0);
-        layoutOscContainer->addLayout(layoutUsbdiv);
-        QLabel *lblUsbdiv=WidgetsFactory::createLblForm("Fuente de reloj de USB (USBDIV):");
-        layoutUsbdiv->addWidget(lblUsbdiv,0,Qt::AlignTop);
+        QLabel *lblUsbDiv=WidgetsFactory::createLblForm("Fuente de reloj de USB (USBDIV):");
+        formLayoutOsc->addWidget(lblUsbDiv,3,0,Qt::AlignTop|Qt::AlignLeft);
         //layout para radiobuttons
         QVBoxLayout *layoutRBUsbSource=new QVBoxLayout();
-        layoutUsbdiv->addLayout(layoutRBUsbSource);
+        formLayoutOsc->addLayout(layoutRBUsbSource,3,1);
         QRadioButton *qRBUsbSourceClock=WidgetsFactory::createRBtn("Origen desde PLL, 96MHz dividido por 2");
         layoutRBUsbSource->addWidget(qRBUsbSourceClock);
         qRBUsbSourceClock->setChecked(true);
         QRadioButton *qRBUsbSpeed=WidgetsFactory::createRBtn("Origen desde oscilador primario sin Postscaler");
         layoutRBUsbSource->addWidget(qRBUsbSpeed);
-        layoutUsbdiv->addStretch();
         //botón de ayuda
         QPushButton *btnHelpUsbdiv=WidgetsFactory::createIconButton();
         btnHelpUsbdiv->setIcon(iconHelp);
-        layoutUsbdiv->addWidget(btnHelpUsbdiv,0,Qt::AlignTop);
+        formLayoutOsc->addWidget(btnHelpUsbdiv,3,2,Qt::AlignTop|Qt::AlignRight);
 
         //Habilitar/deshabilitar Full-speed usb
-        QHBoxLayout *layoutUsbSpeed=new QHBoxLayout();
-        layoutUsbSpeed->setContentsMargins(0,0,0,0);
-        layoutOscContainer->addLayout(layoutUsbSpeed);
-        layoutOscContainer->setAlignment(layoutUsbSpeed,Qt::AlignTop);
         QLabel *lblUsbSpeed=WidgetsFactory::createLblForm("Habilitar Full-Speed USB (FSEN):");
-        layoutUsbSpeed->addWidget(lblUsbSpeed);
+        formLayoutOsc->addWidget(lblUsbSpeed,4,0);
         //QCheckBox para habilitar o deshabilitar full-speed usb
         QCheckBox *checkEnableUsbSpeed=WidgetsFactory::createCheckBox("Habilitar");
-        layoutUsbSpeed->addWidget(checkEnableUsbSpeed);
-        layoutUsbSpeed->addStretch();                //lo que está antes se va a la izquierda, lo que está después a la derecha
+        formLayoutOsc->addWidget(checkEnableUsbSpeed,4,1,Qt::AlignCenter|Qt::AlignLeft);
         //botón de ayuda
         QPushButton *btnHelpUsbSpeed=WidgetsFactory::createIconButton();
         btnHelpUsbSpeed->setIcon(iconHelp);
-        layoutUsbSpeed->addWidget(btnHelpUsbSpeed);
+        formLayoutOsc->addWidget(btnHelpUsbSpeed,4,2,Qt::AlignTop|Qt::AlignRight);
 
+        //botón de pasar a código C
+        QHBoxLayout *layoutButtons=new QHBoxLayout();      //layout para limitar el ancho del botón
+        layoutButtons->addStretch();
+        QPushButton *btnToC=WidgetsFactory::createControlButton("Obtener código C");
+        layoutButtons->addWidget(btnToC);
+        layoutButtons->addStretch();
+        layoutOscContainer->addSpacing(10);
+        layoutOscContainer->addLayout(layoutButtons);
         //Subir todo hacia arriba
         layoutOscContainer->addStretch();
         //Agregar Pestaña
@@ -332,7 +335,15 @@ void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del m
             }
             QComboPostcaler->setCurrentIndex(0);
         });
+        //slot de btnToC
+        connect(btnToC,&QPushButton::clicked,this,&GuiPic18f4550::clickedBtnToC);
     }
     tabWidgetPeripheal->setCurrentIndex(index);
+}
 
+void GuiPic18f4550::clickedBtnToC(){
+    qDebug()<<"Se presionó en botón para convertir a C";
+    txtEditOutCode=new QTextEdit();
+    txtEditOutCode->setPlainText("****Prueba este codigo*****");
+    mainLayoutConf->addWidget(txtEditOutCode);
 }
