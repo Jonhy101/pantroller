@@ -18,7 +18,7 @@ private:
     //Componentes gráficos
     QLabel *labelPinout, *labelTest2;
     QLabel *labelImgDisp, *labelCaract, *labelPerip;
-    QTextEdit *txtEditFeatures, *txtEditOutCode;
+    QTextEdit *txtEditFeatures, *txtEditOutCode, *txtEditOutLog;
     QPushButton *btnHideImg, *btnHideFeatures;
     QToolButton *tBtnOscillator, *tBtnEEprom, *tBtnInterrupts,
                 *tBtnTimers, *tBtnCpp, *tBtnEccp, *tBtnUsb,
@@ -43,10 +43,16 @@ private:
     //Agrega y gestiona el menu de periféricos del micro
     void periphealMenu();
 
+    //Agrega barra de botones de salida de código
+    void addSourceButtonsBar();
+
 private slots:
     void clickedBtnOscillator();
 
-    //se hace clic en el botón de obtener código c
+    /*
+     *Sirve para procesar las configuraciones y determinar el código C, colocarlo
+     *en pantalla
+     */
     void clickedBtnToC();
 };
 

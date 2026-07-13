@@ -86,6 +86,27 @@ QRadioButton* WidgetsFactory::createRBtn(const QString &text, QWidget *parent){
     myRadioButton->setProperty("tipo","form-rb");
     return myRadioButton;
 }
+
+//Crea QToolButton de vista de log
+QToolButton* WidgetsFactory::createLogButton(QWidget *parent){
+    QToolButton *myToolButton=new QToolButton(parent);
+    QIcon buttonIcon(":/icons/images/icons/LogButton.png");
+    myToolButton->setIcon(buttonIcon);
+    myToolButton->setIconSize(QSize(24,24));
+    myToolButton->setMaximumSize(QSize(30,30));
+    return myToolButton;
+}
+
+//Crea un QToolButton de vista de código
+QToolButton* WidgetsFactory::createSourceButton(QWidget *parent){
+    QToolButton *myToolButton=new QToolButton(parent);
+    QIcon buttonIcon(":/icons/images/icons/CodeButton.png");
+    myToolButton->setIcon(buttonIcon);
+    myToolButton->setIconSize(QSize(24,24));
+    myToolButton->setMaximumSize(QSize(30,30));
+    return myToolButton;
+}
+
 /**************************************************/
 
 

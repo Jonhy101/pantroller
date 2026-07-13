@@ -45,7 +45,7 @@ GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget 
     mainLayoutConf=new QVBoxLayout(panelConf);
     tabWidgetPeripheal=new QTabWidget();
     tabWidgetPeripheal->setProperty("tipo","QTabWidget-conf");
-    mainLayoutConf->addWidget(tabWidgetPeripheal);
+    mainLayoutConf->addWidget(tabWidgetPeripheal);    
 }
 
 
@@ -216,6 +216,33 @@ void GuiPic18f4550::periphealMenu(){
     layoutMenuPerip->setColumnMinimumWidth(3,80);
 }
 
+void GuiPic18f4550::addSourceButtonsBar(){
+    QHBoxLayout *sourceBtnLayout=new QHBoxLayout();
+
+    //botón de pasar a código C
+    sourceBtnLayout->addStretch();
+    QPushButton *btnToC=WidgetsFactory::createControlButton("Obtener código C");
+    sourceBtnLayout->addWidget(btnToC);
+    sourceBtnLayout->addStretch();
+
+    QHBoxLayout *toolsLayout=new QHBoxLayout();
+    QToolButton *logViewButton=WidgetsFactory::createLogButton();
+    logViewButton->setCheckable(true);
+    logViewButton->setToolTip("Activar/desactivar vista del Log");
+    QToolButton *sourceViewButton=WidgetsFactory::createSourceButton();
+    sourceViewButton->setCheckable(true);
+    sourceViewButton->setToolTip("Activar/desactivar vista del Código");
+    // toolsLayout->addStretch();
+    toolsLayout->addWidget(logViewButton);
+    toolsLayout->addWidget(sourceViewButton);
+    sourceBtnLayout->addLayout(toolsLayout);
+
+    mainLayoutConf->addSpacing(10);
+    mainLayoutConf->addLayout(sourceBtnLayout);
+
+    //slot de btnToC
+    connect(btnToC,&QPushButton::clicked,this,&GuiPic18f4550::clickedBtnToC);
+}
 //slots
 void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del microcontrolador
     int index=tabWidgetPeripheal->indexOf(tabOscillator);
@@ -310,16 +337,12 @@ void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del m
         btnHelpUsbSpeed->setIcon(iconHelp);
         formLayoutOsc->addWidget(btnHelpUsbSpeed,4,2,Qt::AlignTop|Qt::AlignRight);
 
-        //botón de pasar a código C
-        QHBoxLayout *layoutButtons=new QHBoxLayout();      //layout para limitar el ancho del botón
-        layoutButtons->addStretch();
-        QPushButton *btnToC=WidgetsFactory::createControlButton("Obtener código C");
-        layoutButtons->addWidget(btnToC);
-        layoutButtons->addStretch();
-        layoutOscContainer->addSpacing(10);
-        layoutOscContainer->addLayout(layoutButtons);
+        //Agregar Barra de botones de herramientas de código
+        addSourceButtonsBar();
+
         //Subir todo hacia arriba
         layoutOscContainer->addStretch();
+        // mainLayoutConf->addStretch();
         //Agregar Pestaña
         index=tabWidgetPeripheal->addTab(tabOscillator,"Oscillator");
         qDebug()<<"Se creó pestaña, ahora index="<<index;
@@ -334,16 +357,26 @@ void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del m
                 QComboPostcaler->addItems(postScalerOptionsNoPLL);
             }
             QComboPostcaler->setCurrentIndex(0);
-        });
-        //slot de btnToC
-        connect(btnToC,&QPushButton::clicked,this,&GuiPic18f4550::clickedBtnToC);
+        });        
     }
     tabWidgetPeripheal->setCurrentIndex(index);
+
 }
 
+
 void GuiPic18f4550::clickedBtnToC(){
+    //!!!!!Revisar que los addStretch del mainLayoutConf agregados no dejan expandir los txtEdit
     qDebug()<<"Se presionó en botón para convertir a C";
+    QHBoxLayout *codeLayout=new QHBoxLayout();
     txtEditOutCode=new QTextEdit();
-    txtEditOutCode->setPlainText("****Prueba este codigo*****");
-    mainLayoutConf->addWidget(txtEditOutCode);
+    txtEditOutCode->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+    txtEditOutCode->setPlainText("****Aquí salida de código*****");
+    txtEditOutLog=new QTextEdit();
+    txtEditOutLog->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);
+    txtEditOutLog->setPlainText("*****Aquí la salida de Log****");
+    codeLayout->addWidget(txtEditOutLog);
+    codeLayout->addWidget(txtEditOutCode);
+
+    mainLayoutConf->addLayout(codeLayout);
+    mainLayoutConf->addStretch();
 }

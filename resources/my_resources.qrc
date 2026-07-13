@@ -40,6 +40,8 @@
         <file>images/icons/RadioButtonNoCheck.png</file>
         <file>images/icons/RadioButtonCheckPress.png</file>
         <file>images/icons/RadioButtonNoCheckPress.png</file>
+        <file>images/icons/CodeButton.png</file>
+        <file>images/icons/LogButton.png</file>
     </qresource>
     <qresource prefix="/imgDevices">
         <file>images/img_devices/pic18f4550.jpg</file>

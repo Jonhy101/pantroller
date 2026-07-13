@@ -1,4 +1,3 @@
-
 /****Contenedor Principal****/
 QWidget[tipo="main-container"]{
     background-color: @BLUE_1;

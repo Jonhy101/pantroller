@@ -81,6 +81,10 @@ public:
     static QToolButton* createBtnUSB(QWidget *parent=nullptr);
 
     static QRadioButton* createRBtn(const QString &text, QWidget *parent=nullptr);
+
+    static QToolButton* createLogButton(QWidget *parent=nullptr);
+
+    static QToolButton* createSourceButton(QWidget *parent=nullptr);
 };
 
 #endif // WIDGETSFACTORY_H
