@@ -34,6 +34,7 @@ int main(int argc, char *argv[]) {
         styleSheet.replace("@BLUE_BUTTON_6", Color::BLUE_BUTTON_6);
         styleSheet.replace("@BLUE_BUTTON_7", Color::BLUE_BUTTON_7);
         styleSheet.replace("@QLINE_BACKGROUND", Color::QLINE_BACKGROUND);
+        styleSheet.replace("@QLINE_ERROR_BORDER", Color::QLINE_ERROR_BORDER);
         a.setStyleSheet(styleSheet);
         qDebug() << "QSS cargado, bytes:" << styleSheet.size();
     }

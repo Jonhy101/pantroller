@@ -119,6 +119,11 @@ QLineEdit[tipo="form-LineEdit"]{
     color: @BLUE_1;
 }
 
+QLineEdit[tipo="form-LineEdit"][invalid="true"]{
+    border: 2px solid @QLINE_ERROR_BORDER;
+    /*background-color: #ed4040;*/
+}
+
 /*******QCheckBox de formularios*****/
 QCheckBox[tipo="form-check-box"]{
     font-size: 13px;

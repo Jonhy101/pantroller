@@ -14,6 +14,7 @@ SOURCES += \
     gui/mainmenugenerator.cpp \
     gui/widgetsfactory.cpp \
     logic/devices.cpp \
+    logic/helpbutton.cpp \
     main.cpp\
     gui/mainwindow.cpp
 
@@ -24,7 +25,8 @@ HEADERS += \
     gui/widgetsfactory.h \
     gui/mainmenugenerator.h\
     gui/mainwindow.h \
-    logic/devices.h
+    logic/devices.h \
+    logic/helpbutton.h
 
 FORMS += \
     gui/mainwindow.ui

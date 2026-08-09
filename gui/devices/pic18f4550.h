@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QToolButton>
 #include <QVBoxLayout>
+#include <QLineEdit>
 #include <QIcon>
 #include <QTabWidget>
 
@@ -19,6 +20,7 @@ private:
     QLabel *labelPinout, *labelTest2;
     QLabel *labelImgDisp, *labelCaract, *labelPerip;
     QTextEdit *txtEditFeatures, *txtEditOutCode, *txtEditOutLog;
+    QLineEdit *lineEditFreq;
     QPushButton *btnHideImg, *btnHideFeatures;
     QToolButton *tBtnOscillator, *tBtnEEprom, *tBtnInterrupts,
                 *tBtnTimers, *tBtnCpp, *tBtnEccp, *tBtnUsb,

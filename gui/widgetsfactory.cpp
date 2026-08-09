@@ -3,6 +3,7 @@
 #include <QAbstractItemView>
 #include <QScrollBar>
 #include <QListView>
+#include "logic/helpbutton.h"
 
 /***********QLabels**************/
 QLabel* WidgetsFactory::createLblMenu(const QString &text, QWidget *parent){
@@ -79,6 +80,13 @@ QPushButton* WidgetsFactory::createIconButton(QWidget *parent){
     QPushButton *btnIcon=new QPushButton(parent);
     btnIcon->setProperty("tipo","button-icon");
     return btnIcon;
+}
+
+//QPushButton para los botones de ayuda
+QPushButton* WidgetsFactory::createHelpButton(const QString &text, QWidget *parent){
+    QPushButton *helpButton=new HelpButton(text, parent);   //instancia de la clase HelpButton que controla el slot de clic en el
+    helpButton->setProperty("tipo","button-icon");
+    return helpButton;
 }
 
 QRadioButton* WidgetsFactory::createRBtn(const QString &text, QWidget *parent){

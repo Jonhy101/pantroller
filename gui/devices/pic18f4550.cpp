@@ -11,6 +11,7 @@
 #include <QLineEdit>
 #include <QRadioButton>
 #include <QIntValidator>
+#include <QMessageBox>
 
 GuiPic18f4550::GuiPic18f4550(QWidget *panelOptions, QWidget *panelConf, QWidget *parent)
     :QWidget(parent){
@@ -266,16 +267,19 @@ void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del m
         QLabel *lblFreq=WidgetsFactory::createLblForm("Frecuencia del Cristal (max. 48MHz):");
         formLayoutOsc->addWidget(lblFreq,0,0,1,1,Qt::AlignCenter|Qt::AlignLeft);
         //QlineEdit de ingreso del valor con validador de enteros y rango
-        QLineEdit *lineEditFreq=WidgetsFactory::createLineEditForm();
+        lineEditFreq=WidgetsFactory::createLineEditForm();
         lineEditFreq->setMaximumWidth(60);
         QValidator *freqValidator=new QIntValidator(1,25);
         lineEditFreq->setValidator(freqValidator);
         //QLabel de texto MHz
         QLabel *lblMhz=WidgetsFactory::createLblForm("MHz");
+        //QPushButton de ayuda
+        QPushButton *btnHelpFreq=WidgetsFactory::createHelpButton("Rango de frecuencias de 1 a 24 MHz");
         //Layout de ingreso de valor y label MHz
         QHBoxLayout *layoutInputFreq=new QHBoxLayout();
         layoutInputFreq->addWidget(lineEditFreq);
         layoutInputFreq->addWidget(lblMhz);
+        formLayoutOsc->addWidget(btnHelpFreq,0,2,Qt::AlignCenter|Qt::AlignLeft);
         //Agregar al layout del formuulario
         formLayoutOsc->addLayout(layoutInputFreq,0,1,1,1,Qt::AlignCenter|Qt::AlignLeft);
 
@@ -367,6 +371,26 @@ void GuiPic18f4550::clickedBtnOscillator(){     //Configuración del reloj del m
 void GuiPic18f4550::clickedBtnToC(){
     //!!!!!Revisar que los addStretch del mainLayoutConf agregados no dejan expandir los txtEdit
     qDebug()<<"Se presionó en botón para convertir a C";
+    //validar si se han llenado las entradas de datos
+    QString resValidacion;
+    if(lineEditFreq->hasAcceptableInput()){
+        qDebug()<<"El campo tiene número válido";
+        lineEditFreq->setProperty("invalid",false);
+    }
+    else{
+        qDebug()<<"El número no es válido";
+        lineEditFreq->setProperty("invalid",true);
+        QMessageBox msgBox(this);
+
+        resValidacion+="-Frecuencia de oscilador sin datos o fuera de rango\n";
+        msgBox.setText("Hay errores en la información de entrada:");
+        msgBox.setInformativeText(resValidacion);
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.exec();
+    }
+    lineEditFreq->style()->unpolish(lineEditFreq);
+    lineEditFreq->style()->polish(lineEditFreq);
+
     QHBoxLayout *codeLayout=new QHBoxLayout();
     txtEditOutCode=new QTextEdit();
     txtEditOutCode->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Expanding);

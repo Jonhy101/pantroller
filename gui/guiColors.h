@@ -25,6 +25,7 @@ namespace Color{
 
     //Colores de QLineEdit
     const QString QLINE_BACKGROUND="white";
+    const QString QLINE_ERROR_BORDER="#e31010";
 }
 
 

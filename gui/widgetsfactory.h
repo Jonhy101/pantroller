@@ -29,6 +29,8 @@ public:
 
     static QPushButton* createIconButton(QWidget *parent=nullptr);
 
+    static QPushButton* createHelpButton(const QString &text, QWidget *parent=nullptr);
+
     static QComboBox* createComboBoxSearchable(const QStringList &itemList, QWidget *parent=nullptr);
 
     static QComboBox* createComboBoxNoSearchable(const QStringList &itemList, QWidget *parent=nullptr);
